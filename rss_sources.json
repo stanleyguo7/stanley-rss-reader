@@ -1,0 +1,26 @@
+[
+  {
+    "name": "MIT Technology Review: AI",
+    "url": "https://www.technologyreview.com/feed/",
+    "category": "global",
+    "notes": "科技前沿 + AI专题"
+  },
+  {
+    "name": "36氪 · 学习与思考",
+    "url": "https://36kr.com/feed",
+    "category": "china",
+    "notes": "聚焦中国科技、影视与创业"
+  },
+  {
+    "name": "Hacker News (newest)",
+    "url": "https://news.ycombinator.com/rss",
+    "category": "global",
+    "notes": "前沿创业/技术实验室观点"
+  },
+  {
+    "name": "Film Daily",
+    "url": "https://filmdaily.co/feed/",
+    "category": "film",
+    "notes": "影视创作与市场观察"
+  }
+]
