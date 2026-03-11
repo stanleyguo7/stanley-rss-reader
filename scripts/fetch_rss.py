@@ -4,12 +4,16 @@
 import argparse
 import datetime
 import json
+import shutil
+import subprocess
+import time
 from pathlib import Path
 
 import feedparser
 
 
-TEMPLATE = """<!-- Generated: {ts} -->
+TEMPLATE = """
+<!-- Generated: {ts} -->
 <!doctype html>
 <html lang=\"zh-CN\">
 <head>
@@ -45,6 +49,9 @@ ENTRY_TEMPLATE = """<section>
 
 ITEM_TEMPLATE = """<li><strong>{title}</strong><br /><span class=\"meta\">{published}</span><br /><a href=\"{link}\">{link}</a><p>{summary}</p></li>"""
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+ARCHIVE_RETENTION_DAYS = 30
+
 
 def safe_excerpt(text: str, length: int = 180) -> str:
     if not text:
@@ -55,15 +62,13 @@ def safe_excerpt(text: str, length: int = 180) -> str:
     return stripped[:length].rstrip() + "…"
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sources", type=Path, default=PROJECT_ROOT / "rss_sources.json")
     parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "output" / "latest.html")
     parser.add_argument("--limit", type=int, default=4)
     parser.add_argument("--summary-json", type=Path, default=PROJECT_ROOT / "output" / "latest.json")
+    parser.add_argument("--git", action="store_true", help="Stage, commit, and push the generated artifacts")
     return parser.parse_args()
 
 
@@ -117,6 +122,38 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
     )
 
 
+def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> None:
+    archive_dir = output_path.parent / "archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+
+    def copy_if_exists(src: Path, suffix: str) -> None:
+        if not src.exists():
+            return
+        dest = archive_dir / f"rss-{timestamp}{suffix}"
+        shutil.copy2(src, dest)
+
+    copy_if_exists(output_path, ".html")
+    copy_if_exists(summary_path, ".json")
+    cleanup_archive(archive_dir, ARCHIVE_RETENTION_DAYS)
+
+
+def cleanup_archive(directory: Path, retention_days: int) -> None:
+    cutoff = time.time() - retention_days * 86400
+    for child in sorted(directory.iterdir()):
+        if child.is_file() and child.stat().st_mtime < cutoff:
+            child.unlink()
+
+
+def git_commit_push(date: datetime.datetime) -> None:
+    message = f"chore: update rss digest {date.strftime('%Y-%m-%d')}"
+    subprocess.run(
+        ["git", "add", "output/latest.html", "output/latest.json", "output/archive"],
+        check=True,
+    )
+    subprocess.run(["git", "commit", "-m", message], check=True)
+    subprocess.run(["git", "push", "origin", "main"], check=True)
+
+
 def main() -> None:
     args = parse_args()
     sources = json.loads(args.sources.read_text())
@@ -124,6 +161,8 @@ def main() -> None:
     for source in sources:
         results.append(summarize_feed(source, args.limit))
     now = datetime.datetime.now()
+    timestamp = now.strftime("%Y-%m-%d_%H%M%S")
+    archive_previous(args.output, args.summary_json, timestamp)
     html = render_html(
         title="RSS 情报摘要",
         subtitle=now.strftime("%Y-%m-%d %H:%M:%S"),
@@ -135,6 +174,8 @@ def main() -> None:
     args.summary_json.write_text(json.dumps({"generated": now.isoformat(), "feeds": results}, ensure_ascii=False, indent=2), encoding="utf-8")
     counts = [f"{r['source_name']}({r['count']})" for r in results]
     print(" | ".join(counts))
+    if args.git:
+        git_commit_push(now)
 
 
 if __name__ == "__main__":

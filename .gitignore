@@ -1,2 +1,6 @@
 .venv/
-output/
+output/*
+!output/latest.html
+!output/latest.json
+!output/archive/
+!output/archive/*
