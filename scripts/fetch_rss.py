@@ -281,19 +281,26 @@ def render_html(title: str, subtitle: str, sections: list[dict], recent_links: l
     )
 
 
+ROOT_ARCHIVE = PROJECT_ROOT / "archive"
+
+
 def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> Path:
     archive_dir = output_path.parent / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
+    ROOT_ARCHIVE.mkdir(parents=True, exist_ok=True)
 
     def copy_if_exists(src: Path, suffix: str) -> None:
         if not src.exists():
             return
         dest = archive_dir / f"rss-{timestamp}{suffix}"
         shutil.copy2(src, dest)
+        root_dest = ROOT_ARCHIVE / dest.name
+        shutil.copy2(dest, root_dest)
 
     copy_if_exists(output_path, ".html")
     copy_if_exists(summary_path, ".json")
     cleanup_archive(archive_dir, ARCHIVE_RETENTION_DAYS)
+    cleanup_archive(ROOT_ARCHIVE, ARCHIVE_RETENTION_DAYS)
     return archive_dir
 
 
@@ -347,7 +354,9 @@ def generate_history_index(archive_dir: Path, window_days: int) -> None:
 </body>
 </html>
 """
-    (archive_dir / "index.html").write_text(content, encoding="utf-8")
+    index_path = archive_dir / "index.html"
+    index_path.write_text(content, encoding="utf-8")
+    (ROOT_ARCHIVE / "index.html").write_text(content, encoding="utf-8")
 
 
 def git_commit_push(date: datetime.datetime) -> None:

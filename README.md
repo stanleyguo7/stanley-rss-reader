@@ -29,8 +29,7 @@ python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.ht
 
 ## 追踪更新
 
-脚本只会提取**最近 24 小时**内的更新（默认 `--limit 20`，补全当日多源内容），因此在首页可以看到所有当天刚出的条目。首页底部会展示“最近更新”链接列表（默认 3 条），每条直接跳到对应的归档 HTML，方便快速回看。历史索引 `output/archive/index.html` 依然保留，列出最近 7 份归档供深度翻查。
-
+脚本只会提取**最近 24 小时**内的更新（默认 `--limit 20`，补全当日多源内容），因此首页内容始终反映当天最新条目。首页底部的“最近更新”链接列出最近 3 个归档 HTML（`archive/rss-xxxx.html`），在 Vercel 上可通过 `https://stanley-rss-reader.vercel.app/archive/rss-xxxx.html` 直接访问。历史索引 `output/archive/index.html` 同样保留，用于浏览最近 7 份归档。
 ## 静态站点（已部署至 Vercel）
 
 我们已经把 `index.html` 设为项目主页，Vercel 会展示最新的 `output/latest.html` 内容（脚本运行后也更新 `index.html`），你可以把这个链接分享给团队成员或直接在飞书里发当前 deploy 网址。
