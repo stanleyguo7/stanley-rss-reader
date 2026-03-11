@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-11T13:38:22.768363",
+  "generated": "2026-03-11T12:07:47.168765",
   "feeds": [
     {
       "source_name": "MIT Technology Review: AI",
@@ -56,26 +56,26 @@
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Wed, 11 Mar 2026 13:38:14 +0800",
+      "feed_updated": "Wed, 11 Mar 2026 12:07:40 +0800",
       "count": 3,
       "entries": [
-        {
-          "title": "天猫2026年新商政策全面升级 免年费、单店季度激励最高300万",
-          "link": "https://www.leiphone.com/category/industrynews/vTmJaCqvIkPD8TJo.html",
-          "published": "Wed, 11 Mar 2026 11:12:00 +0800",
-          "summary": "<p>2026年，商家天猫开店创牌再迎利好。3月10日，天猫举办新商、潜力商家大会，宣布2026年持续降低商家成本，免年费，追加经营激励，加大专项扶持投入。</p><p>据悉，天猫对所有新入驻商家免年费，提供30天免息贷款、生意参谋免费、运费险减免等20项普惠权益。对具备全网月成交超10万元爆品的新商家，快速打标“超级爆款”，追加搜索和推荐专属流量。对单季度贡献行业50%以上确收GMV的新商家群体…"
-        },
-        {
-          "title": "蔚来发布2025Q4及全年财报，Q4经营利润12.5亿元",
-          "link": "https://www.leiphone.com/category/industrynews/MbArAVHEIoMNV8kY.html",
-          "published": "Wed, 11 Mar 2026 10:34:00 +0800",
-          "summary": "<p>3月10日，蔚来发布2025年四季度及全年财报。四季度实现经营利润12.5亿元，实现公司首次季度盈利。四季度现金储备459亿元，环比大幅增长近百亿。2026年一季度交付指引80,000台-83,000台，同比增长90.1%-97.2%。营收指引244.8亿元-251.8亿元，同比增长103.4%至109.2%。</p>"
-        },
         {
           "title": "独家｜前Habana中国区负责人于明扬接任沐曦BD团队负责人",
           "link": "https://www.leiphone.com/category/chipdesign/tV4tP2hSgmgrylNO.html",
           "published": "Wed, 11 Mar 2026 09:46:00 +0800",
           "summary": "<p style=\"text-align: center;\"><img src=\"https://static.leiphone.com/uploads/new/images/20260311/69b0c8af937ae.png?imageView2/2/w/740\" /></p><p><span style=\"font-size: 12px;\">作者｜包永刚</span></p><p><span…"
+        },
+        {
+          "title": "4名儿童路上「COS减速带」险被碾，车主：太后怕；博主发吉利广告被指责：把女性塑造成拜金刻薄形象，官方回应；董明珠：促消费先要加工资",
+          "link": "https://www.leiphone.com/category/zaobao/iy4EVfkxqQnxKzVy.html",
+          "published": "Wed, 11 Mar 2026 09:33:00 +0800",
+          "summary": "<p style=\"text-align: center;\"><span style=\"font-size: 24px;\"><strong>要闻提示</strong></span><br /></p><p style=\"text-align: justify;\">1.宝马销售直播狂踩小米汽车：180天速成鸡可以吃，但180天造的车不敢开！小米高管回应</p><p style=\"text-align…"
+        },
+        {
+          "title": "海信发布RGB-Mini LED电视E7S Pro",
+          "link": "https://www.leiphone.com/category/smarthome/733Ju0V4hYAk6iLM.html",
+          "published": "Tue, 10 Mar 2026 22:15:00 +0800",
+          "summary": "<p style=\"text-align: left;\">3月10日，海信举行了主题为“RGB-Mini LED换代风暴 越级而至”的新品发布会，正式推出搭载海信全新RGB-Mini LED技术的性能旗舰电视E7S Pro。这款新品凭借光源底层重构的技术突破、全维度的配置升级与沉浸式的体验创新，成为2026年旗舰电视的版本答案，不仅打破了传统单色背光显示技术的物理天花板，更以主流旗舰价位带来越级的…"
         }
       ]
     },
@@ -89,15 +89,9 @@
     {
       "source_name": "量子位",
       "notes": "AI、量子和芯片观察",
-      "feed_updated": "Wed, 11 Mar 2026 04:11:14 +0000",
+      "feed_updated": "Tue, 10 Mar 2026 14:04:40 +0000",
       "count": 3,
       "entries": [
-        {
-          "title": "20亿砸向00后创业机器人公司！估值一年暴涨7倍，国家级资本重仓",
-          "link": "https://www.qbitai.com/2026/03/385824.html",
-          "published": "Wed, 11 Mar 2026 04:11:14 +0000",
-          "summary": "数采成本仅为传统方案的10%"
-        },
         {
           "title": "蔚来，盈利了！！！",
           "link": "https://www.qbitai.com/2026/03/385797.html",
@@ -109,6 +103,12 @@
           "link": "https://www.qbitai.com/2026/03/385664.html",
           "published": "Tue, 10 Mar 2026 09:03:04 +0000",
           "summary": "左手养qq虾，右手养微信虾"
+        },
+        {
+          "title": "给龙虾定MBTI、发工牌，还让龙虾偷技能…打工人得适应新环境了",
+          "link": "https://www.qbitai.com/2026/03/385771.html",
+          "published": "Tue, 10 Mar 2026 08:26:17 +0000",
+          "summary": "协作空间正在被重塑"
         }
       ]
     },
@@ -158,16 +158,16 @@
           "summary": "<a href=\"https://news.ycombinator.com/item?id=47324054\">Comments</a>"
         },
         {
-          "title": "Zig – Type Resolution Redesign and Language Changes",
-          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
-          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
-        },
-        {
           "title": "U+237C ⍼ Is Azimuth",
           "link": "https://ionathan.ch/2026/02/16/angzarr.html",
           "published": "Tue, 10 Mar 2026 22:33:45 +0000",
           "summary": "<a href=\"https://news.ycombinator.com/item?id=47329605\">Comments</a>"
+        },
+        {
+          "title": "Zig – Type Resolution Redesign and Language Changes",
+          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
+          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
         }
       ]
     }

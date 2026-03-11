@@ -97,6 +97,12 @@ TEMPLATE = Template("""
       color: #333;
       line-height: 1.5;
     }
+    .item img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 6px;
+      border: 1px solid #eee;
+    }
     .external {
       display: inline-flex;
       align-items: center;
