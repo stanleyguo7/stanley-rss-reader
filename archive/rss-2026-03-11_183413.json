@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-11T15:45:55.941138",
+  "generated": "2026-03-11T16:22:14.975233",
   "feeds": [
     {
       "source_name": "36氪 · 学习与思考",
@@ -7,48 +7,6 @@
       "feed_updated": "未知",
       "count": 20,
       "entries": [
-        {
-          "title": "A股AI算力产业链预喜率超50%",
-          "link": "https://36kr.com/newsflashes/3718088525510022?f=rss",
-          "published": "2026-03-11 13:15:14  +0800",
-          "summary": "数据显示，截至3月10日，已有近3000家A股上市公司披露2025年业绩预告或业绩快报，其中AI算力产业链预喜率超50%，明显高于市场整体水平。记者走访了解到，上游核心器件企业业绩高增长的重要原因，是全球科技巨头对AI基础设施的持续投资，国内不少光模块、PCB等龙头厂商为海外大型科技公司提供核心部件。业内普遍认为，通过增加算力规模可有效提升模型能力，因此科技巨头持续加大投入，以抢占未来人工智能产业竞争的战略高地。（央视财经）"
-        },
-        {
-          "title": "杰华特旗下公司在深圳成立半导体公司",
-          "link": "https://36kr.com/newsflashes/3718027258754432?f=rss",
-          "published": "2026-03-11 13:25:51  +0800",
-          "summary": "36氪获悉，爱企查App显示，近日，杰柏特半导体（深圳）有限公司成立，法定代表人为邓亦舟，注册资本100万元人民币，经营范围包括集成电路设计、集成电路芯片设计及服务、集成电路制造、集成电路芯片及产品制造、半导体分立器件制造等。股东信息显示，该公司由杰华特旗下厦门杰柏特半导体有限公司全资持股。"
-        },
-        {
-          "title": "“龙虾”概念港股跌幅扩大，MINIMAX-WP跌7%",
-          "link": "https://36kr.com/newsflashes/3718100062516867?f=rss",
-          "published": "2026-03-11 13:26:58  +0800",
-          "summary": "36氪获悉，“龙虾”概念港股跌幅扩大，MINIMAX-WP跌7%，智谱跌近5%。"
-        },
-        {
-          "title": "摩根大通下调私人信贷集团贷款组合估值",
-          "link": "https://36kr.com/newsflashes/3718115999069577?f=rss",
-          "published": "2026-03-11 13:43:10  +0800",
-          "summary": "据英国金融时报援引知情人士消息，摩根大通已通知多家私人信贷机构，对其投资组合中的部分贷款进行估值下调。这些贷款是相关基金向该行融资时使用的抵押品。此举将限制摩根大通今后以这些贷款为抵押，向私人信贷机构发放的贷款规模。此次被下调估值的贷款主要投向软件企业。摩根大通已收紧对私人信贷机构的放贷。摩根大通拒绝就此置评。（新浪财经）"
-        },
-        {
-          "title": "沪深两市成交额连续第12个交易日突破2万亿元",
-          "link": "https://36kr.com/newsflashes/3718120888383104?f=rss",
-          "published": "2026-03-11 13:48:09  +0800",
-          "summary": "36氪获悉，沪深两市成交额连续第12个交易日突破2万亿元，较上一日此时放量超1100亿元。"
-        },
-        {
-          "title": "追觅成AWE史上最大规模参展品牌",
-          "link": "https://36kr.com/newsflashes/3718130049758855?f=rss",
-          "published": "2026-03-11 13:57:28  +0800",
-          "summary": "3月12日-15日，追觅科技将携上百项全球首发的全新品类与首创技术亮相AWE 2026（2026年中国家电及消费电子博览会），覆盖日常出行、居家生活，到户外体验、地面出行乃至天空宇宙等多个领域。本次追觅横跨5大展馆，占地11193㎡，成为AWE有史以来参展面积最大的智能科技生态品牌。"
-        },
-        {
-          "title": "NAVEE全场景智能空间生态将首次亮相AWE2026",
-          "link": "https://36kr.com/newsflashes/3718133205939588?f=rss",
-          "published": "2026-03-11 14:00:41  +0800",
-          "summary": "3月11日，全球智能空间科技品牌NAVEE携20余款新品、20多项首创技术，登陆AWE2026（2026年中国家电及消费电子博览会）。这是NAVEE自2021年成立以来，首次集中呈现其“三维立体出行—户外移动空间—生活智能家电—智能空间系统”的全场景智能空间生态，标志着品牌从智能出行向智能空间系统的战略跃迁。"
-        },
         {
           "title": "中汽协：2月汽车产销分别完成167.2万辆和180.5万辆，同比分别下降20.5%和15.2%",
           "link": "https://36kr.com/newsflashes/3718138959885699?f=rss",
@@ -126,14 +84,56 @@
           "link": "https://36kr.com/newsflashes/3718230844208515?f=rss",
           "published": "2026-03-11 15:40:00  +0800",
           "summary": "36氪获悉，三角轮胎在互动平台表示，公司已在做6PPD替代品的新材料测试。同时，为提升研发效率，公司加入了美国轮胎制造商协会（USTMA）牵头组建的全球联盟，与全球同行集体协作系统性应对6PPD挑战。"
+        },
+        {
+          "title": "谷歌将Gemini与Chrome的整合功能扩展到印度、加拿大和新西兰",
+          "link": "https://36kr.com/newsflashes/3718236923524736?f=rss",
+          "published": "2026-03-11 15:46:11  +0800",
+          "summary": "36氪获悉，谷歌周三宣布，将把Gemini与Chrome的整合功能扩展到更多地区，包括印度、加拿大和新西兰。此次推出后，用户可以在桌面版Chrome的侧边栏中使用Gemini，从而向谷歌的AI聊天机器人询问屏幕内容相关的问题、获取Gmail、Keep、Drive和YouTube中的信息，并比较不同标签页的内容。（新浪财经）"
+        },
+        {
+          "title": "现货白银日内跌超2%",
+          "link": "https://36kr.com/newsflashes/3718241143715200?f=rss",
+          "published": "2026-03-11 15:50:29  +0800",
+          "summary": "36氪获悉，现货白银日内跌超2%，现报86.40美元/盎司。"
+        },
+        {
+          "title": "三安光电：生产的Micro LED光源器件已送样国内外头部企业进行模组组装验证",
+          "link": "https://36kr.com/newsflashes/3718245181240704?f=rss",
+          "published": "2026-03-11 15:54:35  +0800",
+          "summary": "36氪获悉，三安光电在互动平台表示，公司与清华大学、中国移动等主体在Micro LED光电器件与高速光通讯领域展开深度合作，共同推进相关技术的研发与应用验证。公司生产的Micro LED光源器件性能卓越，已送样国内外头部企业进行模组组装验证。公司已在Micro LED材料和器件方面布局国内外专利400余件。"
+        },
+        {
+          "title": "恒指收跌0.24%，恒生科技指数跌0.11%",
+          "link": "https://36kr.com/newsflashes/3718261537732228?f=rss",
+          "published": "2026-03-11 16:11:13  +0800",
+          "summary": "36氪获悉，恒指收跌0.24%，恒生科技指数跌0.11%；汽车、电气设备、纺织���饰板块领涨，蔚来涨超14%，宁德时代涨9%，小鹏汽车涨超3%，老铺黄金涨超2%；半导体、软件服务地产板块走弱，上海复旦跌超5%，MiniMax、智谱跌超6%，汇景控股跌4%；南向资金净买入34.48亿港元。"
+        },
+        {
+          "title": "比亚迪：两万多座闪充站，将能满足城区90% 的区域",
+          "link": "https://36kr.com/p/3718267571041664?f=rss",
+          "published": "2026-03-11 16:17:52  +0800",
+          "summary": "<p>3月5日，比亚迪在深圳召开了二代刀片电池发布会。据比亚迪董事长王传福介绍:</p> <p>第二代刀片电池及闪充技术，能够做到在5分钟内，从10%SoC充电到70%SoC；</p> <p>在9分钟内，从10%SoC充电到97%SoC；</p> <p>在零下30摄氏度环境，从20%SoC充电到97%SoC，会比常温环境下慢3分钟。</p> <p>发布第二代刀片电池的同时，比亚迪还宣布，直到今年年底，将在全国建设2万座闪充站。</p>…"
+        },
+        {
+          "title": "小米汽车：小米YU7 2月销量20196辆",
+          "link": "https://36kr.com/newsflashes/3718268642637188?f=rss",
+          "published": "2026-03-11 16:18:27  +0800",
+          "summary": "36氪获悉，小米汽车公布数据显示，2026年2月小米YU7销量20196辆。"
+        },
+        {
+          "title": "方邦股份：子公司穗邦电子拟以2000万元受让中科四合1.06859%股权",
+          "link": "https://36kr.com/newsflashes/3718271803668097?f=rss",
+          "published": "2026-03-11 16:21:40  +0800",
+          "summary": "36氪获悉，方邦股份公告，全资子公司穗邦电子拟通过受让股权的方式获得深圳中科四合科技有限公司1.06859%股权，投资金额为自有资金人民币2000万元。本次投资已经公司第四届董事会第十三次会议审议通过，无需提交股东会审议。投资不构成关联交易，亦不构成重大资产重组。目标公司最近一年又一期财务数据显示，2025年资产总额为4.57亿元，负债总额为2.77亿元，营业收入为1.26亿元，净利润为-1.14亿元。"
         }
       ]
     },
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Wed, 11 Mar 2026 15:45:46 +0800",
-      "count": 4,
+      "feed_updated": "Wed, 11 Mar 2026 16:22:09 +0800",
+      "count": 5,
       "entries": [
         {
           "title": "4名儿童路上「COS减速带」险被碾，车主：太后怕；博主发吉利广告被指责：把女性塑造成拜金刻薄形象，官方回应；董明珠：促消费先要加工资",
@@ -158,14 +158,20 @@
           "link": "https://www.leiphone.com/category/industrynews/vTmJaCqvIkPD8TJo.html",
           "published": "Wed, 11 Mar 2026 11:12:00 +0800",
           "summary": "<p>2026年，商家天猫开店创牌再迎利好。3月10日，天猫举办新商、潜力商家大会，宣布2026年持续降低商家成本，免年费，追加经营激励，加大专项扶持投入。</p><p>据悉，天猫对所有新入驻商家免年费，提供30天免息贷款、生意参谋免费、运费险减免等20项普惠权益。对具备全网月成交超10万元爆品的新商家，快速打标“超级爆款”，追加搜索和推荐专属流量。对单季度贡献行业50%以上确收GMV的新商家群体，返还佣金或者营销激励，单店单季度最高激…"
+        },
+        {
+          "title": "百度智能云发布DuClaw 零门槛开启自由“养虾”",
+          "link": "https://www.leiphone.com/category/industrynews/R5htapqdbfUHU6bW.html",
+          "published": "Wed, 11 Mar 2026 14:07:00 +0800",
+          "summary": "<p>3月11日，百度智能云发布零部署服务DuClaw，将过往的“一键部署”模式进一步精简为“零部署”，用户无需自行选择OpenClaw镜像部署云端服务器，无需自行配置大模型推理服务的API Key，做到零门槛“养虾”。目前，用户已可通过网页端直接使用该服务。后续还将陆续支持企业微信、钉钉、飞书等主流通讯应用，让AI助理随时随地触手可及。</p><p style=\"text-align: center;\"><img src=\"https…"
         }
       ]
     },
     {
       "source_name": "量子位",
       "notes": "AI、量子和芯片观察",
-      "feed_updated": "Wed, 11 Mar 2026 05:20:43 +0000",
-      "count": 2,
+      "feed_updated": "Wed, 11 Mar 2026 07:45:16 +0000",
+      "count": 3,
       "entries": [
         {
           "title": "20亿砸向00后创业机器人公司！估值一年暴涨7倍，国家级资本重仓",
@@ -178,6 +184,12 @@
           "link": "https://www.qbitai.com/2026/03/385840.html",
           "published": "Wed, 11 Mar 2026 05:20:19 +0000",
           "summary": ""
+        },
+        {
+          "title": "ChatGPT和Claude争了个寂寞！用户重叠仅11%，中国应用霸榜移动端",
+          "link": "https://www.qbitai.com/2026/03/386114.html",
+          "published": "Wed, 11 Mar 2026 07:45:16 +0000",
+          "summary": "a16z发布Top100 GenAI应用榜"
         }
       ]
     },
@@ -192,92 +204,6 @@
           "link": "https://filmdaily.co/travel/scuba-diving-in-cozumel-marine-park-reef-walls-drift-routes-and-day%e2%80%91trip-logistics/",
           "published": "Wed, 11 Mar 2026 01:40:49 +0000",
           "summary": "<p>Discover the magic of Cozumel—explore reef walls, drift routes, and day-trip logistics in the marine park for unforgettable Caribbean diving adventures.</p> <p>The post <a href=\"https://filmdaily.co/travel/scuba-divin…"
-        }
-      ]
-    },
-    {
-      "source_name": "Hacker News (newest)",
-      "notes": "前沿创业/技术实验室观点",
-      "feed_updated": "未知",
-      "count": 13,
-      "entries": [
-        {
-          "title": "Launch HN: RunAnywhere (YC W26) – Faster AI Inference on Apple Silicon",
-          "link": "https://github.com/RunanywhereAI/rcli",
-          "published": "Tue, 10 Mar 2026 17:14:52 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47326101\">Comments</a>"
-        },
-        {
-          "title": "FFmpeg-over-IP – Connect to remote FFmpeg servers",
-          "link": "https://github.com/steelbrain/ffmpeg-over-ip",
-          "published": "Tue, 10 Mar 2026 18:26:39 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327015\">Comments</a>"
-        },
-        {
-          "title": "Mesh over Bluetooth LE, TCP, or Reticulum",
-          "link": "https://github.com/torlando-tech/columba",
-          "published": "Tue, 10 Mar 2026 19:02:01 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327473\">Comments</a>"
-        },
-        {
-          "title": "Agents that run while I sleep",
-          "link": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
-          "published": "Tue, 10 Mar 2026 19:09:46 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327559\">Comments</a>"
-        },
-        {
-          "title": "RISC-V Is Sloooow",
-          "link": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
-          "published": "Tue, 10 Mar 2026 20:11:54 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47328214\">Comments</a>"
-        },
-        {
-          "title": "Cloudflare crawl endpoint",
-          "link": "https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/",
-          "published": "Tue, 10 Mar 2026 22:27:15 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329557\">Comments</a>"
-        },
-        {
-          "title": "U+237C ⍼ Is Azimuth",
-          "link": "https://ionathan.ch/2026/02/16/angzarr.html",
-          "published": "Tue, 10 Mar 2026 22:33:45 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329605\">Comments</a>"
-        },
-        {
-          "title": "Universal vaccine against respiratory infections and allergens",
-          "link": "https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html",
-          "published": "Tue, 10 Mar 2026 22:33:48 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329608\">Comments</a>"
-        },
-        {
-          "title": "Zig – Type Resolution Redesign and Language Changes",
-          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
-          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
-        },
-        {
-          "title": "Writing my own text editor, and daily-driving it",
-          "link": "https://blog.jsbarretto.com/post/text-editor",
-          "published": "Wed, 11 Mar 2026 02:04:22 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331034\">Comments</a>"
-        },
-        {
-          "title": "Standardizing source maps",
-          "link": "https://bloomberg.github.io/js-blog/post/standardizing-source-maps/",
-          "published": "Wed, 11 Mar 2026 04:42:23 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331802\">Comments</a>"
-        },
-        {
-          "title": "TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization",
-          "link": "https://www.hume.ai/blog/opensource-tada",
-          "published": "Wed, 11 Mar 2026 05:42:55 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332054\">Comments</a>"
-        },
-        {
-          "title": "Create value for others and don’t worry about the returns",
-          "link": "https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html",
-          "published": "Wed, 11 Mar 2026 05:45:49 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332074\">Comments</a>"
         }
       ]
     }

@@ -184,7 +184,7 @@ ITEM_TEMPLATE = Template("""<li class=\"item\">
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ARCHIVE_RETENTION_DAYS = 30
 MAX_PER_SOURCE = 20
-HISTORY_WINDOW_DAYS = 7
+HISTORY_WINDOW_DAYS = 3
 REST_WINDOW_HOURS = 24
 
 
@@ -295,30 +295,31 @@ ROOT_ARCHIVE = PROJECT_ROOT / "archive"
 
 
 def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> Path:
-    archive_dir = output_path.parent / "archive"
-    archive_dir.mkdir(parents=True, exist_ok=True)
     ROOT_ARCHIVE.mkdir(parents=True, exist_ok=True)
 
-    def copy_if_exists(src: Path, suffix: str) -> None:
+    def copy_if_exists(src: Path, suffix: str, dest_dir: Path) -> None:
         if not src.exists():
             return
-        dest = archive_dir / f"rss-{timestamp}{suffix}"
+        dest = dest_dir / f"rss-{timestamp}{suffix}"
         shutil.copy2(src, dest)
-        root_dest = ROOT_ARCHIVE / dest.name
-        shutil.copy2(dest, root_dest)
 
-    copy_if_exists(output_path, ".html")
-    copy_if_exists(summary_path, ".json")
-    cleanup_archive(archive_dir, ARCHIVE_RETENTION_DAYS)
-    cleanup_archive(ROOT_ARCHIVE, ARCHIVE_RETENTION_DAYS)
-    return archive_dir
+    copy_if_exists(output_path, ".html", ROOT_ARCHIVE)
+    copy_if_exists(summary_path, ".json", ROOT_ARCHIVE)
+    cleanup_archive(ROOT_ARCHIVE, ARCHIVE_RETENTION_DAYS, HISTORY_WINDOW_DAYS)
+    return ROOT_ARCHIVE
 
 
-def cleanup_archive(directory: Path, retention_days: int) -> None:
+def cleanup_archive(directory: Path, retention_days: int, max_files: int | None = None) -> None:
     cutoff = time.time() - retention_days * 86400
-    for child in sorted(directory.iterdir()):
+    files = sorted(directory.iterdir())
+    for child in files:
         if child.is_file() and child.stat().st_mtime < cutoff:
             child.unlink()
+    if max_files is not None:
+        remaining = sorted(directory.iterdir())
+        for child in remaining[:-max_files]:
+            if child.is_file():
+                child.unlink()
 
 
 def get_recent_links(archive_dir: Path, limit: int) -> list[tuple[str, str]]:
