@@ -12,15 +12,39 @@
     "notes": "聚焦中国科技、影视与创业"
   },
   {
-    "name": "Hacker News (newest)",
-    "url": "https://news.ycombinator.com/rss",
-    "category": "global",
-    "notes": "前沿创业/技术实验室观点"
+    "name": "雷锋网 · AI科技",
+    "url": "https://www.leiphone.com/feed",
+    "category": "china",
+    "notes": "科技与AI产业深度"
+  },
+  {
+    "name": "机器之心",
+    "url": "https://www.jiqizhixin.com/rss",
+    "category": "china",
+    "notes": "AI研究与企业动态"
+  },
+  {
+    "name": "量子位",
+    "url": "https://www.qbitai.com/rss",
+    "category": "china",
+    "notes": "AI、量子和芯片观察"
+  },
+  {
+    "name": "AI探索 · AITop100",
+    "url": "https://www.aitop100.cn/rss",
+    "category": "china",
+    "notes": "AIGC 竞赛、案例与课程"
   },
   {
     "name": "Film Daily",
     "url": "https://filmdaily.co/feed/",
     "category": "film",
     "notes": "影视创作与市场观察"
+  },
+  {
+    "name": "Hacker News (newest)",
+    "url": "https://news.ycombinator.com/rss",
+    "category": "global",
+    "notes": "前沿创业/技术实验室观点"
   }
 ]

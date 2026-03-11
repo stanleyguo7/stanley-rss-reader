@@ -8,46 +8,143 @@ import shutil
 import subprocess
 import time
 from pathlib import Path
+from string import Template
 
 import feedparser
 
 
-TEMPLATE = """
-<!-- Generated: {ts} -->
+TEMPLATE = Template("""
+<!-- Generated: $ts -->
 <!doctype html>
 <html lang=\"zh-CN\">
 <head>
   <meta charset=\"utf-8\" />
   <title>RSS Digest</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
   <style>
-    body {{ font-family: 'Noto Sans SC', sans-serif; margin: 32px; max-width: 980px; }}
-    header {{ margin-bottom: 24px; }}
-    section {{ margin-bottom: 28px; border-bottom: 1px solid #e5e5e5; padding-bottom: 18px; }}
-    h2 {{ margin-bottom: 4px; }}
-    ul {{ margin-top: 6px; }}
-    li {{ margin-bottom: 10px; }}
-    .meta {{ color: #666; font-size: 0.9em; }}
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+      margin: 0;
+      padding: 32px;
+      background: #f5f5f5;
+      color: #111;
+    }
+    main {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin-bottom: 6px;
+      font-size: 2em;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 6px 20px rgba(3, 10, 18, 0.08);
+      border: 1px solid #e7e7e7;
+    }
+    section h2 {
+      margin: 0 0 6px;
+      font-size: 1.2em;
+    }
+    .section-meta {
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .item {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .item:last-child {
+      border-bottom: none;
+    }
+    .item strong {
+      font-size: 1em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .item .meta {
+      font-size: 0.85em;
+      color: #999;
+    }
+    .item p {
+      margin: 8px 0 10px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .external {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9em;
+      color: #0b73ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .external:after {
+      content: '↗';
+      font-size: 0.8em;
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 18px;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>{title}</h1>
-    <p>{subtitle}</p>
-  </header>
-  {sections}
+  <main>
+    <header>
+      <h1>$title</h1>
+      <p class=\"subtitle\">$subtitle</p>
+    </header>
+    <div class=\"grid\">
+      $sections
+    </div>
+  </main>
 </body>
 </html>
-"""
+""")
 
-ENTRY_TEMPLATE = """<section>
-  <h2>{source_name}</h2>
-  <p class=\"meta\">{notes} · {count} 条 · 最后更新：{feed_updated}</p>
+ENTRY_TEMPLATE = Template("""<section>
+  <h2>$source_name</h2>
+  <p class=\"section-meta\">$notes · $count 条 · 最后更新：$feed_updated</p>
   <ul>
-    {items}
+    $items
   </ul>
-</section>"""
+</section>""")
 
-ITEM_TEMPLATE = """<li><strong>{title}</strong><br /><span class=\"meta\">{published}</span><br /><a href=\"{link}\">{link}</a><p>{summary}</p></li>"""
+ITEM_TEMPLATE = Template("""<li class=\"item\">
+  <strong>$title</strong>
+  <span class=\"meta\">$published</span>
+  <p>$summary</p>
+  <a class=\"external\" href=\"$link\" target=\"_blank\" rel=\"noopener\">阅读原文</a>
+</li>""")
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ARCHIVE_RETENTION_DAYS = 30
@@ -66,7 +163,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sources", type=Path, default=PROJECT_ROOT / "rss_sources.json")
     parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "output" / "latest.html")
-    parser.add_argument("--limit", type=int, default=4)
+    parser.add_argument("--limit", type=int, default=3)
     parser.add_argument("--summary-json", type=Path, default=PROJECT_ROOT / "output" / "latest.json")
     parser.add_argument("--git", action="store_true", help="Stage, commit, and push the generated artifacts")
     return parser.parse_args()
@@ -97,7 +194,7 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
     section_fragments = []
     for section in sections:
         items = "\n    ".join(
-            ITEM_TEMPLATE.format(
+            ITEM_TEMPLATE.substitute(
                 title=entry["title"],
                 published=entry["published"],
                 link=entry["link"],
@@ -106,7 +203,7 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
             for entry in section["entries"]
         )
         section_fragments.append(
-            ENTRY_TEMPLATE.format(
+            ENTRY_TEMPLATE.substitute(
                 source_name=section["source_name"],
                 notes=section["notes"],
                 count=section["count"],
@@ -114,11 +211,12 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
                 items=items,
             )
         )
-    return TEMPLATE.format(
+    sections_html = "\n  ".join(section_fragments) if section_fragments else "<p>没有抓到任何条目。</p>"
+    return TEMPLATE.substitute(
         ts=subtitle,
         title=title,
         subtitle=subtitle,
-        sections="\n  ".join(section_fragments) if section_fragments else "<p>没有抓到任何条目。</p>",
+        sections=sections_html,
     )
 
 

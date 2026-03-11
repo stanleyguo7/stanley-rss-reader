@@ -19,7 +19,7 @@ python -m pip install -r requirements.txt
 python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.html --summary-json output/latest.json
 ```
 
-反馈点评会打印每个源抓到的数量。你可以把 `--limit` 调整为 6~8 来抓更丰富的故事，也可以把 `.venv` 名字改成你习惯的虚拟环境目录。
+默认会抓取每个源的最新 3 条记录（总计约 20 条），并以栅格卡片形式展示：标题+摘要+“阅读原文”按钮，原始链接不再直接暴露，更方便阅读。你也可以在命令里加 `--limit 5` 来扩大覆盖。
 
 想让脚本直接把文件 `git add` / `commit` / `push` 回 GitHub？加上 `--git` 开关，脚本会在当前工作区自动提交当天最新的 `output/latest.html`、`output/latest.json`、根目录 `index.html`，以及新生成的 `output/archive/rss-*.html` / `.json`。
 
