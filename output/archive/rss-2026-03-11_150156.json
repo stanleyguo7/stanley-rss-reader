@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-11T15:01:56.486482",
+  "generated": "2026-03-11T14:37:04.204395",
   "feeds": [
     {
       "source_name": "36氪 · 学习与思考",
@@ -7,6 +7,24 @@
       "feed_updated": "未知",
       "count": 20,
       "entries": [
+        {
+          "title": "星际荣耀旗下海南航天发射技术公司增资至约2.59亿元",
+          "link": "https://36kr.com/newsflashes/3718000593729160?f=rss",
+          "published": "2026-03-11 12:28:18  +0800",
+          "summary": "36氪获悉，爱企查App显示，近日，海南星际荣耀航天发射技术有限责任公司发生工商变更，注册资本从1亿元增加到约2.59亿元，增幅约为159.14%。海南星际荣耀航天发射技术有限责任公司成立于2018年6月，法定代表人为何光辉，由星际荣耀航天科技集团股份有限公司全资持股。"
+        },
+        {
+          "title": "百度智能云发布DuClaw",
+          "link": "https://36kr.com/newsflashes/3718039643485571?f=rss",
+          "published": "2026-03-11 12:34:28  +0800",
+          "summary": "36氪获悉，3月11日，百度智能云发布零部署OpenClaw服务DuClaw。DuClaw 深度预置百度搜索、百科、学术搜索等优势 Skills，支持DeepSeek、Kimi-K2.5、GLM-5、MiniMax-M2.等主流大模型。目前用户已可通过网页端直接使用。"
+        },
+        {
+          "title": "紧缩预期升温，两家澳洲大行预计澳央行3月份将连续第二次加息",
+          "link": "https://36kr.com/newsflashes/3718001206883976?f=rss",
+          "published": "2026-03-11 12:43:17  +0800",
+          "summary": "澳大利亚“四大银行”中已有两家银行的经济学家预计，澳央行下周将连续第二次上调利率，以应对居高不下的通胀压力。周三发布的研究报告显示，澳大利亚国民银行和西太平洋银行预计央行下周将加息25个基点至4.1%。瑞银和德意志银行此前也给出了类似预测。（财联社）"
+        },
         {
           "title": "Omdia：2030年智能手机卫星直连（D2D）服务收入将逼近120亿美元",
           "link": "https://36kr.com/newsflashes/3718026841536134?f=rss",
@@ -71,7 +89,7 @@
           "title": "NAVEE全场景智能空间生态将首次亮相AWE2026",
           "link": "https://36kr.com/newsflashes/3718133205939588?f=rss",
           "published": "2026-03-11 14:00:41  +0800",
-          "summary": "3月11日，全球智能空间科技品牌NAVEE携20余款新品、20多项首创技术，登陆AWE2026（2026年中国家电及消费电子博览会）。这是NAVEE自2021年成立以来，首次集中呈现其“三维立体出行—户外移动空间—生活智能家电—智能空间系统”的全场景智能空间生态，标志着品牌从智能出行向智能��间系统的战略跃迁。"
+          "summary": "3月11日，全球智能空间科技品牌NAVEE携20余款新品、20多项首创技术，登陆AWE2026（2026年中国家电及消费电子博览会）。这是NAVEE自2021年成立以来，首次集中呈现其“三维立体出行—户外移动空间—生活智能家电—智能空间系统”的全场景智能空间生态，标志着品牌从智能出行向智能空间系统的战略跃迁。"
         },
         {
           "title": "中汽协：2月汽车产销分别完成167.2万辆和180.5万辆，同比分别下降20.5%和15.2%",
@@ -108,31 +126,13 @@
           "link": "https://36kr.com/newsflashes/3718158370420097?f=rss",
           "published": "2026-03-11 14:26:17  +0800",
           "summary": "36氪获悉，爱企查App显示，近日，上海华曜芯半导体有限公司成立，法定代表人为周利民，注册资本为10亿元人民币，经营范围包括集成电路制造、集成电路芯片及产品制造、集成电路销售、集成电路设计、集成电路芯片设计及服务等。股权穿透图显示，该公司由上海华虹（集团）有限公司及旗下上海华励博企业管理合伙企业（有限合伙）共同持股。"
-        },
-        {
-          "title": "和硕2025年净利润144.0亿元新台币，同比减少14.7%",
-          "link": "https://36kr.com/newsflashes/3718174305498753?f=rss",
-          "published": "2026-03-11 14:42:29  +0800",
-          "summary": "和硕3月11日公布2025年业绩显示，营收净额1.12万亿元新台币，同比减少7.1%；净利润144.0亿元新台币，同比减少14.7%；每股收益5.39元新台币，上年同期6.34元新台币。（界面）"
-        },
-        {
-          "title": "「泡泡玛特们」能回A股了？",
-          "link": "https://36kr.com/p/3718189771863427?f=rss",
-          "published": "2026-03-11 14:58:41  +0800",
-          "summary": "<p>作者&nbsp;|&nbsp;王晗玉</p> <p>编辑&nbsp;|&nbsp;张帆</p> <p>3月6日，中国证监会主席吴清在十四届全国人大四次会议经济主题记者会上表示，将在创业板增设一套更加精准、更为包容的上市标准，并明确提及积极支持新型消费、现代服务业等优质创新创业企业在创业板发行上市。</p> <p><strong>这一表态被市场解读为创业板向新型消费与现代服务业企业敞开大门的信号。</strong></p> <p>此…"
-        },
-        {
-          "title": "A股三大指数集体收涨",
-          "link": "https://36kr.com/newsflashes/3718192719377793?f=rss",
-          "published": "2026-03-11 15:01:13  +0800",
-          "summary": "节能风电、赣能股份涨停，宝利国际涨超9%，宇通客车涨超3%；汽车、能源、电力领涨，航天军工、半导体、文化传媒走弱；沪指涨0.25%，深成指涨0.78%，创业板指涨1.31%。"
         }
       ]
     },
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Wed, 11 Mar 2026 15:01:48 +0800",
+      "feed_updated": "Wed, 11 Mar 2026 14:36:53 +0800",
       "count": 4,
       "entries": [
         {
@@ -192,98 +192,6 @@
           "link": "https://filmdaily.co/travel/scuba-diving-in-cozumel-marine-park-reef-walls-drift-routes-and-day%e2%80%91trip-logistics/",
           "published": "Wed, 11 Mar 2026 01:40:49 +0000",
           "summary": "<p>Discover the magic of Cozumel—explore reef walls, drift routes, and day-trip logistics in the marine park for unforgettable Caribbean diving adventures.</p> <p>The post <a href=\"https://filmdaily.co/travel/scuba-divin…"
-        }
-      ]
-    },
-    {
-      "source_name": "Hacker News (newest)",
-      "notes": "前沿创业/技术实验室观点",
-      "feed_updated": "未知",
-      "count": 14,
-      "entries": [
-        {
-          "title": "Launch HN: Didit (YC W26) – Stripe for Identity Verification",
-          "link": "https://news.ycombinator.com/item?id=47324296",
-          "published": "Tue, 10 Mar 2026 15:08:05 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324296\">Comments</a>"
-        },
-        {
-          "title": "Launch HN: RunAnywhere (YC W26) – Faster AI Inference on Apple Silicon",
-          "link": "https://github.com/RunanywhereAI/rcli",
-          "published": "Tue, 10 Mar 2026 17:14:52 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47326101\">Comments</a>"
-        },
-        {
-          "title": "FFmpeg-over-IP – Connect to remote FFmpeg servers",
-          "link": "https://github.com/steelbrain/ffmpeg-over-ip",
-          "published": "Tue, 10 Mar 2026 18:26:39 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327015\">Comments</a>"
-        },
-        {
-          "title": "Mesh over Bluetooth LE, TCP, or Reticulum",
-          "link": "https://github.com/torlando-tech/columba",
-          "published": "Tue, 10 Mar 2026 19:02:01 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327473\">Comments</a>"
-        },
-        {
-          "title": "Agents that run while I sleep",
-          "link": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
-          "published": "Tue, 10 Mar 2026 19:09:46 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327559\">Comments</a>"
-        },
-        {
-          "title": "RISC-V Is Sloooow",
-          "link": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
-          "published": "Tue, 10 Mar 2026 20:11:54 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47328214\">Comments</a>"
-        },
-        {
-          "title": "Cloudflare crawl endpoint",
-          "link": "https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/",
-          "published": "Tue, 10 Mar 2026 22:27:15 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329557\">Comments</a>"
-        },
-        {
-          "title": "U+237C ⍼ Is Azimuth",
-          "link": "https://ionathan.ch/2026/02/16/angzarr.html",
-          "published": "Tue, 10 Mar 2026 22:33:45 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329605\">Comments</a>"
-        },
-        {
-          "title": "Universal vaccine against respiratory infections and allergens",
-          "link": "https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html",
-          "published": "Tue, 10 Mar 2026 22:33:48 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329608\">Comments</a>"
-        },
-        {
-          "title": "Zig – Type Resolution Redesign and Language Changes",
-          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
-          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
-        },
-        {
-          "title": "Writing my own text editor, and daily-driving it",
-          "link": "https://blog.jsbarretto.com/post/text-editor",
-          "published": "Wed, 11 Mar 2026 02:04:22 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331034\">Comments</a>"
-        },
-        {
-          "title": "Standardizing source maps",
-          "link": "https://bloomberg.github.io/js-blog/post/standardizing-source-maps/",
-          "published": "Wed, 11 Mar 2026 04:42:23 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331802\">Comments</a>"
-        },
-        {
-          "title": "TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization",
-          "link": "https://www.hume.ai/blog/opensource-tada",
-          "published": "Wed, 11 Mar 2026 05:42:55 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332054\">Comments</a>"
-        },
-        {
-          "title": "Create value for others and don’t worry about the returns",
-          "link": "https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html",
-          "published": "Wed, 11 Mar 2026 05:45:49 +0000",
-          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332074\">Comments</a>"
         }
       ]
     }

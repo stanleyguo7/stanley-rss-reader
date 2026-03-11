@@ -125,11 +125,20 @@ TEMPLATE = Template("""
       grid-column: 1 / -1;
       text-align: right;
       margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 0.95em;
     }
     .footer a {
       color: #0b73ff;
       font-weight: 600;
       text-decoration: none;
+    }
+    .footer .separator {
+      color: #999;
     }
   </style>
 </head>
@@ -237,7 +246,7 @@ def gather_new_entries(feed_cfg: dict, limit: int, threshold: datetime.datetime)
     return section, len(section_entries)
 
 
-def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
+def render_html(title: str, subtitle: str, sections: list[dict], recent_links: list[tuple[str, str]]) -> str:
     section_fragments = []
     for section in sections:
         items = "\n    ".join(
@@ -259,7 +268,11 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
             )
         )
     sections_html = "\n  ".join(section_fragments) if section_fragments else "<p>没有抓到任何条目。</p>"
-    footer = "<footer class=\"footer\"><a href=\"archive/index.html\">查看过去 7 天的资讯</a></footer>"
+    if recent_links:
+        recent_part = ' | '.join(f'<a href="{link}">{label}</a>' for link, label in recent_links)
+    else:
+        recent_part = '<span>暂无更新</span>'
+    footer = f"<footer class=\"footer\"><span>最近更新：</span>{recent_part}<span class=\"separator\">·</span><a href=\"archive/index.html\">查看过去 7 天的资讯</a></footer>"
     return TEMPLATE.substitute(
         ts=subtitle,
         title=title,
@@ -289,6 +302,16 @@ def cleanup_archive(directory: Path, retention_days: int) -> None:
     for child in sorted(directory.iterdir()):
         if child.is_file() and child.stat().st_mtime < cutoff:
             child.unlink()
+
+
+def get_recent_links(archive_dir: Path, limit: int) -> list[tuple[str, str]]:
+    files = sorted(archive_dir.glob("rss-*.html"), reverse=True)
+    links = []
+    for f in files[:limit]:
+        ts = f.name.replace("rss-", "")[:-5]
+        display = ts.replace("_", " ")
+        links.append((f"archive/{f.name}", display))
+    return links
 
 
 def generate_history_index(archive_dir: Path, window_days: int) -> None:
@@ -352,10 +375,12 @@ def main() -> None:
     timestamp = now.strftime("%Y-%m-%d_%H%M%S")
     archive_dir = archive_previous(args.output, args.summary_json, timestamp)
     generate_history_index(archive_dir, HISTORY_WINDOW_DAYS)
+    recent_links = get_recent_links(archive_dir, 3)
     html = render_html(
         title="RSS 情报摘要",
         subtitle=now.strftime("%Y-%m-%d %H:%M:%S"),
         sections=results,
+        recent_links=recent_links,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.summary_json.parent.mkdir(parents=True, exist_ok=True)
