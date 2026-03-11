@@ -172,6 +172,8 @@ def main() -> None:
     args.summary_json.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(html, encoding="utf-8")
     args.summary_json.write_text(json.dumps({"generated": now.isoformat(), "feeds": results}, ensure_ascii=False, indent=2), encoding="utf-8")
+    index_path = PROJECT_ROOT / "index.html"
+    index_path.write_text(html, encoding="utf-8")
     counts = [f"{r['source_name']}({r['count']})" for r in results]
     print(" | ".join(counts))
     if args.git:

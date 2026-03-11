@@ -21,11 +21,15 @@ python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.ht
 
 反馈点评会打印每个源抓到的数量。你可以把 `--limit` 调整为 6~8 来抓更丰富的故事，也可以把 `.venv` 名字改成你习惯的虚拟环境目录。
 
-想让脚本直接把文件 `git add` / `commit` / `push` 回 GitHub？加上 `--git` 开关，脚本会在当前工作区自动提交当天最新的 `output/latest.html`、`output/latest.json` 以及新生成的 `output/archive/rss-*.html` / `.json`。
+想让脚本直接把文件 `git add` / `commit` / `push` 回 GitHub？加上 `--git` 开关，脚本会在当前工作区自动提交当天最新的 `output/latest.html`、`output/latest.json`、根目录 `index.html`，以及新生成的 `output/archive/rss-*.html` / `.json`。
 
 ## 归档与历史
 
 执行前会把旧的 `output/latest.html` / `output/latest.json` 复制到 `output/archive/`，文件名里带时间戳，默认只保留最近 30 天的版本。你可以直接在 `output/archive` 里打开历史快报，配合每日分镜会更方便。
+
+## 静态站点（已部署至 Vercel）
+
+我们已经把 `index.html` 设为项目主页，Vercel 会展示最新的 `output/latest.html` 内容（脚本运行后也更新 `index.html`），你可以把这个链接分享给团队成员或直接在飞书里发当前 deploy 网址。
 
 ## 通过 OpenClaw 定期运行
 
