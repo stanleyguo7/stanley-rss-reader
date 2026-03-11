@@ -48,16 +48,22 @@ TEMPLATE = Template("""
       margin-bottom: 20px;
     }
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      width: 100%;
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
     section {
       background: #fff;
-      border-radius: 16px;
-      padding: 18px 20px;
-      box-shadow: 0 6px 20px rgba(3, 10, 18, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(3, 10, 18, 0.14);
       border: 1px solid #e7e7e7;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: min(900px, 100%);
+      margin: 0 auto;
     }
     section h2 {
       margin: 0 0 6px;
@@ -93,9 +99,13 @@ TEMPLATE = Template("""
       color: #999;
     }
     .item p {
-      margin: 8px 0 10px;
+      margin: 6px 0 10px;
       color: #333;
-      line-height: 1.5;
+      line-height: 1.7;
+      word-break: break-word;
+    }
+    .item br + a {
+      display: none;
     }
     .item img {
       max-width: 100%;

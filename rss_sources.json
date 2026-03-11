@@ -40,11 +40,5 @@
     "url": "https://filmdaily.co/feed/",
     "category": "film",
     "notes": "影视创作与市场观察"
-  },
-  {
-    "name": "Hacker News (newest)",
-    "url": "https://news.ycombinator.com/rss",
-    "category": "global",
-    "notes": "前沿创业/技术实验室观点"
   }
 ]
