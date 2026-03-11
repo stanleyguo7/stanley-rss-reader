@@ -35,11 +35,12 @@ python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.ht
 
 我们已经把 `index.html` 设为项目主页，Vercel 会展示最新的 `output/latest.html` 内容（脚本运行后也更新 `index.html`），你可以把这个链接分享给团队成员或直接在飞书里发当前 deploy 网址。
 
-## 通过 OpenClaw 定期运行
+## 定时运行
 
-我们已经在 Gateway 中注册了定时任务（Job ID `322cca5a-48de-4842-b634-6d0945919f92`），每天 08:00 Asia/Shanghai：
+本地的 `run_rss.sh` + `rss-cron.tab` 会在每天 07:00（系统 crontab）执行：
 
-- 执行命令 `python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.html --summary-json output/latest.json --limit 4 --git`
-- 脚本会把命令输出（各源抓到的数量）公告到当前通道，自动提交新快报，并提醒你 `output/latest.html` 里有最新内容。
+- 激活 `.venv` 并运行 `python scripts/fetch_rss.py --limit 20 --git`
+- 归档 `output/latest.*` 到 `output/archive/`（保留 30 天）并同步更新 `index.html`
+- 自动提交并推送最新快报，便于 Vercel 首页实时呈现
 
-因此只要你在分镜/剧情会议前打开 `output/latest.html`，就能快速抓到最新的资讯灵感。
+如此一来只要在分镜/剧情会议前打开项目主页（`https://stanley-rss-reader.vercel.app/`），就能看到当日新鲜的资讯。
