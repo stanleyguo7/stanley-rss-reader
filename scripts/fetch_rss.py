@@ -52,6 +52,16 @@ TEMPLATE = Template("""
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+    .footer {
+      grid-column: 1 / -1;
+      text-align: right;
+      margin-top: 12px;
+    }
+    .footer a {
+      color: #0b73ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
     section {
       background: #fff;
       border-radius: 16px;
@@ -158,6 +168,7 @@ STATE_PATH = PROJECT_ROOT / "state" / "rss_state.json"
 ARCHIVE_RETENTION_DAYS = 30
 MAX_PER_SOURCE = 20
 MAX_SEEN_LINKS = 200
+HISTORY_WINDOW_DAYS = 7
 
 
 def safe_excerpt(text: str, length: int = 180) -> str:
@@ -300,15 +311,16 @@ def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
             )
         )
     sections_html = "\n  ".join(section_fragments) if section_fragments else "<p>没有抓到任何条目。</p>"
+    footer = "<footer class=\"footer\"><a href=\"archive/index.html\">查看过去 7 天的资讯</a></footer>"
     return TEMPLATE.substitute(
         ts=subtitle,
         title=title,
         subtitle=subtitle,
-        sections=sections_html,
+        sections=sections_html + "\n  " + footer,
     )
 
 
-def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> None:
+def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> Path:
     archive_dir = output_path.parent / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
 
@@ -321,6 +333,43 @@ def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> N
     copy_if_exists(output_path, ".html")
     copy_if_exists(summary_path, ".json")
     cleanup_archive(archive_dir, ARCHIVE_RETENTION_DAYS)
+    return archive_dir
+
+
+def generate_history_index(archive_dir: Path, window_days: int) -> None:
+    files = sorted(archive_dir.glob("rss-*.html"), reverse=True)
+    recent = files[:window_days]
+    items = "\n".join(
+        f"  <li><a href=\"./{f.name}\">{f.name.replace('rss-', '')[:-5].replace('_', ' ')}</a></li>"
+        for f in recent
+    )
+    content = f"""
+<!doctype html>
+<html lang=\"zh-CN\">
+<head>
+  <meta charset=\"utf-8\" />
+  <title>历史快报</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+  <style>
+    body {{ font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; padding: 32px; background: #141414; color: #fff; }}
+    h1 {{ margin-bottom: 12px; }}
+    ul {{ padding-left: 16px; }}
+    li {{ margin-bottom: 8px; }}
+    a {{ color: #4ea5ff; }}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>过去 7 天的快报</h1>
+    <p>点击条目即可查看对应日报。</p>
+  </header>
+  <ul>
+{items}
+  </ul>
+</body>
+</html>
+"""
+    (archive_dir / "index.html").write_text(content, encoding="utf-8")
 
 
 def cleanup_archive(directory: Path, retention_days: int) -> None:

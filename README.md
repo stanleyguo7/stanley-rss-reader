@@ -29,7 +29,7 @@ python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.ht
 
 ## 追踪更新
 
-脚本会在 `state/rss_state.json` 记录每个 RSS 源上一次成功抓取的时间与条目 ID（该文件已加入 `.gitignore`）。每次运行只会把新内容（基于时间戳或链接）呈现在首页，因此不会重复。你可以直接看这个文件判断什么时候有新条目。
+脚本会在 `state/rss_state.json` 记录每个 RSS 源上一次成功抓取的时间与条目 ID（该文件已加入 `.gitignore`）。每次运行只会把新内容（基于时间戳或链接）呈现在首页，因此不会重复。你可以直接看这个文件判断什么时候有新条目。首页底部有个“查看过去7天的资讯”链接，点击即可进入 `output/archive/index.html`，查看最近一周的历史快报。
 
 ## 静态站点（已部署至 Vercel）
 
