@@ -52,16 +52,6 @@ TEMPLATE = Template("""
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    .footer {
-      grid-column: 1 / -1;
-      text-align: right;
-      margin-top: 12px;
-    }
-    .footer a {
-      color: #0b73ff;
-      font-weight: 600;
-      text-decoration: none;
-    }
     section {
       background: #fff;
       border-radius: 16px;
@@ -131,6 +121,16 @@ TEMPLATE = Template("""
         padding: 18px;
       }
     }
+    .footer {
+      grid-column: 1 / -1;
+      text-align: right;
+      margin-top: 12px;
+    }
+    .footer a {
+      color: #0b73ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -162,13 +162,11 @@ ITEM_TEMPLATE = Template("""<li class=\"item\">
   <a class=\"external\" href=\"$link\" target=\"_blank\" rel=\"noopener\">阅读原文</a>
 </li>""")
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-STATE_PATH = PROJECT_ROOT / "state" / "rss_state.json"
 ARCHIVE_RETENTION_DAYS = 30
 MAX_PER_SOURCE = 20
-MAX_SEEN_LINKS = 200
 HISTORY_WINDOW_DAYS = 7
+REST_WINDOW_HOURS = 24
 
 
 def safe_excerpt(text: str, length: int = 180) -> str:
@@ -190,85 +188,36 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_state() -> dict:
-    if not STATE_PATH.exists():
-        return {"sources": {}}
-    data = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    return {"sources": data.get("sources", {})}
-
-
-def save_state(state: dict) -> None:
-    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
-
-
-def entry_identifier(entry: dict) -> str:
-    return entry.get("id") or entry.get("link") or entry.get("title", "")
-
-
 def entry_timestamp(entry: dict) -> datetime.datetime | None:
     for key in ("published_parsed", "updated_parsed", "created_parsed"):
         struct = entry.get(key)
         if struct:
-            return datetime.datetime.fromtimestamp(time.mktime(struct))
+            return datetime.datetime.fromtimestamp(time.mktime(struct), datetime.timezone.utc)
     for key in ("published", "updated"):
         text = entry.get(key)
         if text:
             try:
-                return datetime.datetime.fromisoformat(text)
+                dt = datetime.datetime.fromisoformat(text)
+                if dt.tzinfo:
+                    return dt.astimezone(datetime.timezone.utc)
+                return dt.replace(tzinfo=datetime.timezone.utc)
             except ValueError:
                 continue
     return None
 
 
-def gather_new_entries(feed_cfg: dict, limit: int, source_state: dict) -> tuple[dict, dict]:
+def gather_new_entries(feed_cfg: dict, limit: int, threshold: datetime.datetime) -> tuple[dict | None, int]:
     parsed = feedparser.parse(feed_cfg["url"])
     entries = []
     for entry in parsed.entries:
         ts = entry_timestamp(entry)
-        entries.append((ts, entry))
-    entries.sort(key=lambda item: item[0] or datetime.datetime.min)
-
-    last_ts = datetime.datetime.fromisoformat(source_state.get("last_timestamp")) if source_state.get("last_timestamp") else datetime.datetime.min
-    seen_links = list(source_state.get("seen_links", []))
-    seen_set = set(seen_links)
-
-    new_entries = []
-    max_ts = last_ts
-    for ts, entry in entries:
-        ident = entry_identifier(entry)
-        is_new = False
-        if ts and ts > last_ts:
-            is_new = True
-        elif ident and ident not in seen_set:
-            is_new = True
-        if is_new:
-            new_entries.append((ts, entry))
-            if ident:
-                seen_set.add(ident)
-        if ts and ts > max_ts:
-            max_ts = ts
-
-    limited = new_entries[-limit:] if new_entries else []
-    update_seen = []
-    for ts, entry in reversed(limited):
-        ident = entry_identifier(entry)
-        if ident and ident not in update_seen:
-            update_seen.append(ident)
-            if len(update_seen) >= MAX_SEEN_LINKS:
-                break
-    for ident in seen_links:
-        if ident not in update_seen and len(update_seen) < MAX_SEEN_LINKS:
-            update_seen.append(ident)
-
-    state_update = {
-        "last_timestamp": max_ts.isoformat(),
-        "seen_links": update_seen,
-    }
-
-    entries_payload = []
+        if ts and ts >= threshold:
+            entries.append((ts, entry))
+    entries.sort(key=lambda item: item[0])
+    limited = entries[-limit:] if entries else []
+    section_entries = []
     for ts, entry in limited:
-        entries_payload.append(
+        section_entries.append(
             {
                 "title": entry.get("title", "(no title)"),
                 "link": entry.get("link", ""),
@@ -276,17 +225,16 @@ def gather_new_entries(feed_cfg: dict, limit: int, source_state: dict) -> tuple[
                 "summary": safe_excerpt(entry.get("summary", entry.get("description", "")), 220),
             }
         )
-
+    if not section_entries:
+        return None, 0
     section = {
         "source_name": feed_cfg["name"],
         "notes": feed_cfg.get("notes", ""),
         "feed_updated": parsed.feed.get("updated", "未知"),
-        "count": len(entries_payload),
-        "entries": entries_payload,
+        "count": len(section_entries),
+        "entries": section_entries,
     }
-    if not entries_payload:
-        section = None
-    return section, state_update, len(entries_payload)
+    return section, len(section_entries)
 
 
 def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
@@ -336,6 +284,13 @@ def archive_previous(output_path: Path, summary_path: Path, timestamp: str) -> P
     return archive_dir
 
 
+def cleanup_archive(directory: Path, retention_days: int) -> None:
+    cutoff = time.time() - retention_days * 86400
+    for child in sorted(directory.iterdir()):
+        if child.is_file() and child.stat().st_mtime < cutoff:
+            child.unlink()
+
+
 def generate_history_index(archive_dir: Path, window_days: int) -> None:
     files = sorted(archive_dir.glob("rss-*.html"), reverse=True)
     recent = files[:window_days]
@@ -372,13 +327,6 @@ def generate_history_index(archive_dir: Path, window_days: int) -> None:
     (archive_dir / "index.html").write_text(content, encoding="utf-8")
 
 
-def cleanup_archive(directory: Path, retention_days: int) -> None:
-    cutoff = time.time() - retention_days * 86400
-    for child in sorted(directory.iterdir()):
-        if child.is_file() and child.stat().st_mtime < cutoff:
-            child.unlink()
-
-
 def git_commit_push(date: datetime.datetime) -> None:
     message = f"chore: update rss digest {date.strftime('%Y-%m-%d')}"
     subprocess.run(
@@ -392,21 +340,18 @@ def git_commit_push(date: datetime.datetime) -> None:
 def main() -> None:
     args = parse_args()
     sources = json.loads(args.sources.read_text())
-    state = load_state()
     results = []
     counts = []
+    threshold = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=REST_WINDOW_HOURS)
     for source in sources:
-        source_state = state["sources"].get(source["name"], {})
-        section, update, count = gather_new_entries(source, args.limit, source_state)
+        section, count = gather_new_entries(source, args.limit, threshold)
         counts.append(f"{source['name']}({count})")
         if section:
             results.append(section)
-        state["sources"][source["name"]] = update
-    save_state(state)
-
     now = datetime.datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H%M%S")
-    archive_previous(args.output, args.summary_json, timestamp)
+    archive_dir = archive_previous(args.output, args.summary_json, timestamp)
+    generate_history_index(archive_dir, HISTORY_WINDOW_DAYS)
     html = render_html(
         title="RSS 情报摘要",
         subtitle=now.strftime("%Y-%m-%d %H:%M:%S"),

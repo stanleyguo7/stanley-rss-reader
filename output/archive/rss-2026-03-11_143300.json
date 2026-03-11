@@ -1,0 +1,93 @@
+{
+  "generated": "2026-03-11T14:12:21.349174",
+  "feeds": [
+    {
+      "source_name": "36氪 · 学习与思考",
+      "notes": "聚焦中国科技、影视与创业",
+      "feed_updated": "未知",
+      "count": 2,
+      "entries": [
+        {
+          "title": "中汽协：2月汽车产销分别完成167.2万辆和180.5万辆，同比分别下降20.5%和15.2%",
+          "link": "https://36kr.com/newsflashes/3718138959885699?f=rss",
+          "published": "2026-03-11 14:06:32  +0800",
+          "summary": "36氪获悉，中汽协数据显示，2月，汽车产销分别完成167.2万辆和180.5万辆，环比分别下降31.7%和23.1%，同比分别下降20.5%和15.2%。"
+        },
+        {
+          "title": "硬件的GitHub：为什么上海愿意分享它的“工业图纸”？",
+          "link": "https://36kr.com/p/3718136930039168?f=rss",
+          "published": "2026-03-11 14:11:16  +0800",
+          "summary": "<p>一台3D打印机前，孩子们目不转睛地盯着喷头来回游走。塑料丝线层层堆叠，不过二十分钟，一只小恐龙便从想象中里，变成了可以握在手心的真实玩具。</p> <p>三十年前，你想要一件东西，只能去商店买。二十年前，你可以找人定制。而今天，你可以直接打印出来。这种转变的意义，远比看上去更深远。当平价 3D 打印机走进客厅，当 AI 能把随手涂鸦秒变立体模型，横亘在创意与现实之间的高墙，第一次被轻松穿透。</p> <p>人人都是设计师——这句话…"
+        }
+      ]
+    },
+    {
+      "source_name": "Hacker News (newest)",
+      "notes": "前沿创业/技术实验室观点",
+      "feed_updated": "未知",
+      "count": 10,
+      "entries": [
+        {
+          "title": "Exploring the ocean with Raspberry Pi–powered marine robots",
+          "link": "https://www.raspberrypi.com/news/exploring-the-ocean-with-raspberry-pi-powered-marine-robots/",
+          "published": "Sat, 07 Mar 2026 17:29:54 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47289590\">Comments</a>"
+        },
+        {
+          "title": "Roblox is minting teen millionaires",
+          "link": "https://www.bloomberg.com/news/articles/2026-03-06/roblox-s-teen-millionaires-are-disrupting-the-gaming-industry",
+          "published": "Sun, 08 Mar 2026 01:20:05 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47293337\">Comments</a>"
+        },
+        {
+          "title": "Invoker Commands API",
+          "link": "https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API",
+          "published": "Sun, 08 Mar 2026 08:16:53 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47295559\">Comments</a>"
+        },
+        {
+          "title": "Julia Snail – An Emacs Development Environment for Julia Like Clojure's Cider",
+          "link": "https://github.com/gcv/julia-snail",
+          "published": "Sun, 08 Mar 2026 09:27:34 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47295855\">Comments</a>"
+        },
+        {
+          "title": "Bippy: React Internals Toolkit",
+          "link": "https://www.bippy.dev/",
+          "published": "Sun, 08 Mar 2026 10:01:23 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47295996\">Comments</a>"
+        },
+        {
+          "title": "Pike: To Exit or Not to Exit",
+          "link": "https://tomjohnell.com/pike-solving-the-should-we-stop-here-or-gamble-on-the-next-exit-problem/",
+          "published": "Sun, 08 Mar 2026 10:51:54 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47296284\">Comments</a>"
+        },
+        {
+          "title": "Open Weights isn't Open Training",
+          "link": "https://www.workshoplabs.ai/blog/open-weights-open-training",
+          "published": "Mon, 09 Mar 2026 23:37:08 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47317288\">Comments</a>"
+        },
+        {
+          "title": "SSH Secret Menu",
+          "link": "https://twitter.com/rebane2001/status/2031037389347406054",
+          "published": "Tue, 10 Mar 2026 03:28:38 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47318797\">Comments</a>"
+        },
+        {
+          "title": "EQT eyes potential $6B sale of Linux pioneer SUSE, sources say",
+          "link": "https://www.reuters.com/business/eqt-eyes-potential-6-billion-sale-linux-pioneer-suse-sources-say-2026-03-09",
+          "published": "Tue, 10 Mar 2026 03:34:52 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47318830\">Comments</a>"
+        },
+        {
+          "title": "We are building data breach machines and nobody cares",
+          "link": "https://idealloc.me/posts/we-are-building-data-breach-machines-and-nobody-cares/",
+          "published": "Tue, 10 Mar 2026 14:50:43 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324058\">Comments</a>"
+        }
+      ]
+    }
+  ]
+}

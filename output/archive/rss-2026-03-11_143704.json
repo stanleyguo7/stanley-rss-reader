@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-11T14:37:04.204395",
+  "generated": "2026-03-11T14:34:15.452654",
   "feeds": [
     {
       "source_name": "36氪 · 学习与思考",
@@ -132,7 +132,7 @@
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Wed, 11 Mar 2026 14:36:53 +0800",
+      "feed_updated": "Wed, 11 Mar 2026 14:33:59 +0800",
       "count": 4,
       "entries": [
         {
@@ -192,6 +192,122 @@
           "link": "https://filmdaily.co/travel/scuba-diving-in-cozumel-marine-park-reef-walls-drift-routes-and-day%e2%80%91trip-logistics/",
           "published": "Wed, 11 Mar 2026 01:40:49 +0000",
           "summary": "<p>Discover the magic of Cozumel—explore reef walls, drift routes, and day-trip logistics in the marine park for unforgettable Caribbean diving adventures.</p> <p>The post <a href=\"https://filmdaily.co/travel/scuba-divin…"
+        }
+      ]
+    },
+    {
+      "source_name": "Hacker News (newest)",
+      "notes": "前沿创业/技术实验室观点",
+      "feed_updated": "未知",
+      "count": 18,
+      "entries": [
+        {
+          "title": "Meta acquires Moltbook",
+          "link": "https://www.axios.com/2026/03/10/meta-facebook-moltbook-agent-social-network",
+          "published": "Tue, 10 Mar 2026 14:38:06 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47323900\">Comments</a>"
+        },
+        {
+          "title": "Tony Hoare has died",
+          "link": "https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html",
+          "published": "Tue, 10 Mar 2026 14:50:16 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324054\">Comments</a>"
+        },
+        {
+          "title": "We are building data breach machines and nobody cares",
+          "link": "https://idealloc.me/posts/we-are-building-data-breach-machines-and-nobody-cares/",
+          "published": "Tue, 10 Mar 2026 14:50:43 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324058\">Comments</a>"
+        },
+        {
+          "title": "Debian decides not to decide on AI-generated contributions",
+          "link": "https://lwn.net/SubscriberLink/1061544/125f911834966dd0/",
+          "published": "Tue, 10 Mar 2026 14:53:13 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324087\">Comments</a>"
+        },
+        {
+          "title": "Launch HN: Didit (YC W26) – Stripe for Identity Verification",
+          "link": "https://news.ycombinator.com/item?id=47324296",
+          "published": "Tue, 10 Mar 2026 15:08:05 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47324296\">Comments</a>"
+        },
+        {
+          "title": "Launch HN: RunAnywhere (YC W26) – Faster AI Inference on Apple Silicon",
+          "link": "https://github.com/RunanywhereAI/rcli",
+          "published": "Tue, 10 Mar 2026 17:14:52 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47326101\">Comments</a>"
+        },
+        {
+          "title": "FFmpeg-over-IP – Connect to remote FFmpeg servers",
+          "link": "https://github.com/steelbrain/ffmpeg-over-ip",
+          "published": "Tue, 10 Mar 2026 18:26:39 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327015\">Comments</a>"
+        },
+        {
+          "title": "Mesh over Bluetooth LE, TCP, or Reticulum",
+          "link": "https://github.com/torlando-tech/columba",
+          "published": "Tue, 10 Mar 2026 19:02:01 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327473\">Comments</a>"
+        },
+        {
+          "title": "Agents that run while I sleep",
+          "link": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
+          "published": "Tue, 10 Mar 2026 19:09:46 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327559\">Comments</a>"
+        },
+        {
+          "title": "Mother of All Grease Fires (1994)",
+          "link": "https://milk.com/wall-o-shame/bucket.html",
+          "published": "Tue, 10 Mar 2026 19:56:32 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47328029\">Comments</a>"
+        },
+        {
+          "title": "RISC-V Is Sloooow",
+          "link": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
+          "published": "Tue, 10 Mar 2026 20:11:54 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47328214\">Comments</a>"
+        },
+        {
+          "title": "Cloudflare crawl endpoint",
+          "link": "https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/",
+          "published": "Tue, 10 Mar 2026 22:27:15 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329557\">Comments</a>"
+        },
+        {
+          "title": "U+237C ⍼ Is Azimuth",
+          "link": "https://ionathan.ch/2026/02/16/angzarr.html",
+          "published": "Tue, 10 Mar 2026 22:33:45 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329605\">Comments</a>"
+        },
+        {
+          "title": "Universal vaccine against respiratory infections and allergens",
+          "link": "https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html",
+          "published": "Tue, 10 Mar 2026 22:33:48 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329608\">Comments</a>"
+        },
+        {
+          "title": "Zig – Type Resolution Redesign and Language Changes",
+          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
+          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
+        },
+        {
+          "title": "Writing my own text editor, and daily-driving it",
+          "link": "https://blog.jsbarretto.com/post/text-editor",
+          "published": "Wed, 11 Mar 2026 02:04:22 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331034\">Comments</a>"
+        },
+        {
+          "title": "Standardizing source maps",
+          "link": "https://bloomberg.github.io/js-blog/post/standardizing-source-maps/",
+          "published": "Wed, 11 Mar 2026 04:42:23 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331802\">Comments</a>"
+        },
+        {
+          "title": "Create value for others and don’t worry about the returns",
+          "link": "https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html",
+          "published": "Wed, 11 Mar 2026 05:45:49 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332074\">Comments</a>"
         }
       ]
     }
