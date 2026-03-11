@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-11T15:58:36.386421",
+  "generated": "2026-03-11T15:50:42.688568",
   "feeds": [
     {
       "source_name": "36氪 · 学习与思考",
@@ -7,6 +7,12 @@
       "feed_updated": "未知",
       "count": 20,
       "entries": [
+        {
+          "title": "“龙虾”概念港股跌幅扩大，MINIMAX-WP跌7%",
+          "link": "https://36kr.com/newsflashes/3718100062516867?f=rss",
+          "published": "2026-03-11 13:26:58  +0800",
+          "summary": "36氪获悉，“龙虾”概念港股跌幅扩大，MINIMAX-WP跌7%，智谱跌近5%。"
+        },
         {
           "title": "摩根大通下调私人信贷集团贷款组合估值",
           "link": "https://36kr.com/newsflashes/3718115999069577?f=rss",
@@ -120,19 +126,13 @@
           "link": "https://36kr.com/newsflashes/3718241143715200?f=rss",
           "published": "2026-03-11 15:50:29  +0800",
           "summary": "36氪获悉，现货白银日内跌超2%，现报86.40美元/盎司。"
-        },
-        {
-          "title": "三安光电：生产的Micro LED光源器件已送样国内外头部企业进行模组组装验证",
-          "link": "https://36kr.com/newsflashes/3718245181240704?f=rss",
-          "published": "2026-03-11 15:54:35  +0800",
-          "summary": "36氪获悉，三安光电在互动平台表示，公司与清华大学、中国移动等主体在Micro LED光电器件与高速光通讯领域展开深度合作，共同推进相关技术的研发与应用验证。公司生产的Micro LED光源器件性能卓越，已送样国内外头部企业进行模组组装验证。公司已在Micro LED材料和器件方面布局国内外专利400余件。"
         }
       ]
     },
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Wed, 11 Mar 2026 15:58:30 +0800",
+      "feed_updated": "Wed, 11 Mar 2026 15:50:34 +0800",
       "count": 4,
       "entries": [
         {
@@ -192,6 +192,98 @@
           "link": "https://filmdaily.co/travel/scuba-diving-in-cozumel-marine-park-reef-walls-drift-routes-and-day%e2%80%91trip-logistics/",
           "published": "Wed, 11 Mar 2026 01:40:49 +0000",
           "summary": "<p>Discover the magic of Cozumel—explore reef walls, drift routes, and day-trip logistics in the marine park for unforgettable Caribbean diving adventures.</p> <p>The post <a href=\"https://filmdaily.co/travel/scuba-divin…"
+        }
+      ]
+    },
+    {
+      "source_name": "Hacker News (newest)",
+      "notes": "前沿创业/技术实验室观点",
+      "feed_updated": "未知",
+      "count": 14,
+      "entries": [
+        {
+          "title": "Launch HN: RunAnywhere (YC W26) – Faster AI Inference on Apple Silicon",
+          "link": "https://github.com/RunanywhereAI/rcli",
+          "published": "Tue, 10 Mar 2026 17:14:52 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47326101\">Comments</a>"
+        },
+        {
+          "title": "FFmpeg-over-IP – Connect to remote FFmpeg servers",
+          "link": "https://github.com/steelbrain/ffmpeg-over-ip",
+          "published": "Tue, 10 Mar 2026 18:26:39 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327015\">Comments</a>"
+        },
+        {
+          "title": "Mesh over Bluetooth LE, TCP, or Reticulum",
+          "link": "https://github.com/torlando-tech/columba",
+          "published": "Tue, 10 Mar 2026 19:02:01 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327473\">Comments</a>"
+        },
+        {
+          "title": "Agents that run while I sleep",
+          "link": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
+          "published": "Tue, 10 Mar 2026 19:09:46 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47327559\">Comments</a>"
+        },
+        {
+          "title": "RISC-V Is Sloooow",
+          "link": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
+          "published": "Tue, 10 Mar 2026 20:11:54 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47328214\">Comments</a>"
+        },
+        {
+          "title": "Cloudflare crawl endpoint",
+          "link": "https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/",
+          "published": "Tue, 10 Mar 2026 22:27:15 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329557\">Comments</a>"
+        },
+        {
+          "title": "U+237C ⍼ Is Azimuth",
+          "link": "https://ionathan.ch/2026/02/16/angzarr.html",
+          "published": "Tue, 10 Mar 2026 22:33:45 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329605\">Comments</a>"
+        },
+        {
+          "title": "Universal vaccine against respiratory infections and allergens",
+          "link": "https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html",
+          "published": "Tue, 10 Mar 2026 22:33:48 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47329608\">Comments</a>"
+        },
+        {
+          "title": "Zig – Type Resolution Redesign and Language Changes",
+          "link": "https://ziglang.org/devlog/2026/#2026-03-10",
+          "published": "Wed, 11 Mar 2026 01:24:47 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47330836\">Comments</a>"
+        },
+        {
+          "title": "Writing my own text editor, and daily-driving it",
+          "link": "https://blog.jsbarretto.com/post/text-editor",
+          "published": "Wed, 11 Mar 2026 02:04:22 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331034\">Comments</a>"
+        },
+        {
+          "title": "Standardizing source maps",
+          "link": "https://bloomberg.github.io/js-blog/post/standardizing-source-maps/",
+          "published": "Wed, 11 Mar 2026 04:42:23 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47331802\">Comments</a>"
+        },
+        {
+          "title": "TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization",
+          "link": "https://www.hume.ai/blog/opensource-tada",
+          "published": "Wed, 11 Mar 2026 05:42:55 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332054\">Comments</a>"
+        },
+        {
+          "title": "Create value for others and don’t worry about the returns",
+          "link": "https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html",
+          "published": "Wed, 11 Mar 2026 05:45:49 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332074\">Comments</a>"
+        },
+        {
+          "title": "AutoKernel: Autoresearch for GPU Kernels",
+          "link": "https://github.com/RightNow-AI/autokernel",
+          "published": "Wed, 11 Mar 2026 07:42:10 +0000",
+          "summary": "<a href=\"https://news.ycombinator.com/item?id=47332688\">Comments</a>"
         }
       ]
     }
