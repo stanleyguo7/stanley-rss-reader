@@ -6,4 +6,4 @@ LOG_DIR="$REPO_DIR/logs"
 mkdir -p "$LOG_DIR"
 cd "$REPO_DIR"
 source "$VENV/bin/activate"
-python scripts/fetch_rss.py --limit 3 --git
+python scripts/fetch_rss.py --limit 20 --git
