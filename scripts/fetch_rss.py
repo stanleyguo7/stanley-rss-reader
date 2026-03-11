@@ -152,8 +152,12 @@ ITEM_TEMPLATE = Template("""<li class=\"item\">
   <a class=\"external\" href=\"$link\" target=\"_blank\" rel=\"noopener\">阅读原文</a>
 </li>""")
 
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STATE_PATH = PROJECT_ROOT / "state" / "rss_state.json"
 ARCHIVE_RETENTION_DAYS = 30
+MAX_PER_SOURCE = 20
+MAX_SEEN_LINKS = 200
 
 
 def safe_excerpt(text: str, length: int = 180) -> str:
@@ -169,31 +173,109 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sources", type=Path, default=PROJECT_ROOT / "rss_sources.json")
     parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "output" / "latest.html")
-    parser.add_argument("--limit", type=int, default=3)
+    parser.add_argument("--limit", type=int, default=MAX_PER_SOURCE)
     parser.add_argument("--summary-json", type=Path, default=PROJECT_ROOT / "output" / "latest.json")
     parser.add_argument("--git", action="store_true", help="Stage, commit, and push the generated artifacts")
     return parser.parse_args()
 
 
-def summarize_feed(feed_cfg: dict, limit: int) -> dict:
+def load_state() -> dict:
+    if not STATE_PATH.exists():
+        return {"sources": {}}
+    data = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    return {"sources": data.get("sources", {})}
+
+
+def save_state(state: dict) -> None:
+    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def entry_identifier(entry: dict) -> str:
+    return entry.get("id") or entry.get("link") or entry.get("title", "")
+
+
+def entry_timestamp(entry: dict) -> datetime.datetime | None:
+    for key in ("published_parsed", "updated_parsed", "created_parsed"):
+        struct = entry.get(key)
+        if struct:
+            return datetime.datetime.fromtimestamp(time.mktime(struct))
+    for key in ("published", "updated"):
+        text = entry.get(key)
+        if text:
+            try:
+                return datetime.datetime.fromisoformat(text)
+            except ValueError:
+                continue
+    return None
+
+
+def gather_new_entries(feed_cfg: dict, limit: int, source_state: dict) -> tuple[dict, dict]:
     parsed = feedparser.parse(feed_cfg["url"])
     entries = []
-    for entry in parsed.entries[:limit]:
-        entries.append(
+    for entry in parsed.entries:
+        ts = entry_timestamp(entry)
+        entries.append((ts, entry))
+    entries.sort(key=lambda item: item[0] or datetime.datetime.min)
+
+    last_ts = datetime.datetime.fromisoformat(source_state.get("last_timestamp")) if source_state.get("last_timestamp") else datetime.datetime.min
+    seen_links = list(source_state.get("seen_links", []))
+    seen_set = set(seen_links)
+
+    new_entries = []
+    max_ts = last_ts
+    for ts, entry in entries:
+        ident = entry_identifier(entry)
+        is_new = False
+        if ts and ts > last_ts:
+            is_new = True
+        elif ident and ident not in seen_set:
+            is_new = True
+        if is_new:
+            new_entries.append((ts, entry))
+            if ident:
+                seen_set.add(ident)
+        if ts and ts > max_ts:
+            max_ts = ts
+
+    limited = new_entries[-limit:] if new_entries else []
+    update_seen = []
+    for ts, entry in reversed(limited):
+        ident = entry_identifier(entry)
+        if ident and ident not in update_seen:
+            update_seen.append(ident)
+            if len(update_seen) >= MAX_SEEN_LINKS:
+                break
+    for ident in seen_links:
+        if ident not in update_seen and len(update_seen) < MAX_SEEN_LINKS:
+            update_seen.append(ident)
+
+    state_update = {
+        "last_timestamp": max_ts.isoformat(),
+        "seen_links": update_seen,
+    }
+
+    entries_payload = []
+    for ts, entry in limited:
+        entries_payload.append(
             {
                 "title": entry.get("title", "(no title)"),
                 "link": entry.get("link", ""),
                 "published": entry.get("published", entry.get("updated", "")),
-                "summary": safe_excerpt(entry.get("summary", entry.get("description", "")), 200),
+                "summary": safe_excerpt(entry.get("summary", entry.get("description", "")), 220),
             }
         )
-    return {
+
+    section = {
         "source_name": feed_cfg["name"],
         "notes": feed_cfg.get("notes", ""),
         "feed_updated": parsed.feed.get("updated", "未知"),
-        "count": len(entries),
-        "entries": entries,
+        "count": len(entries_payload),
+        "entries": entries_payload,
     }
+    if not entries_payload:
+        section = None
+    return section, state_update, len(entries_payload)
 
 
 def render_html(title: str, subtitle: str, sections: list[dict]) -> str:
@@ -251,7 +333,7 @@ def cleanup_archive(directory: Path, retention_days: int) -> None:
 def git_commit_push(date: datetime.datetime) -> None:
     message = f"chore: update rss digest {date.strftime('%Y-%m-%d')}"
     subprocess.run(
-        ["git", "add", "output/latest.html", "output/latest.json", "output/archive"],
+        ["git", "add", "output/latest.html", "output/latest.json", "index.html", "output/archive"],
         check=True,
     )
     subprocess.run(["git", "commit", "-m", message], check=True)
@@ -261,9 +343,18 @@ def git_commit_push(date: datetime.datetime) -> None:
 def main() -> None:
     args = parse_args()
     sources = json.loads(args.sources.read_text())
+    state = load_state()
     results = []
+    counts = []
     for source in sources:
-        results.append(summarize_feed(source, args.limit))
+        source_state = state["sources"].get(source["name"], {})
+        section, update, count = gather_new_entries(source, args.limit, source_state)
+        counts.append(f"{source['name']}({count})")
+        if section:
+            results.append(section)
+        state["sources"][source["name"]] = update
+    save_state(state)
+
     now = datetime.datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H%M%S")
     archive_previous(args.output, args.summary_json, timestamp)
@@ -278,7 +369,6 @@ def main() -> None:
     args.summary_json.write_text(json.dumps({"generated": now.isoformat(), "feeds": results}, ensure_ascii=False, indent=2), encoding="utf-8")
     index_path = PROJECT_ROOT / "index.html"
     index_path.write_text(html, encoding="utf-8")
-    counts = [f"{r['source_name']}({r['count']})" for r in results]
     print(" | ".join(counts))
     if args.git:
         git_commit_push(now)

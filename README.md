@@ -19,13 +19,17 @@ python -m pip install -r requirements.txt
 python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.html --summary-json output/latest.json
 ```
 
-默认会抓取每个源的最新 3 条记录（总计约 20 条），并以栅格卡片形式展示：标题+摘要+“阅读原文”按钮，原始链接不再直接暴露，更方便阅读。你也可以在命令里加 `--limit 5` 来扩大覆盖。
+默认会抓取每个源自上次成功运行后的所有新内容（单源最多 20 条，合计约 160 条），并以栅格卡片形式展示：标题+摘要+“阅读原文”按钮，原始链接不再直接暴露，更方便阅读。你也可以在命令里加 `--limit 5`（或更大）控制单次最多拉多少条更新。
 
 想让脚本直接把文件 `git add` / `commit` / `push` 回 GitHub？加上 `--git` 开关，脚本会在当前工作区自动提交当天最新的 `output/latest.html`、`output/latest.json`、根目录 `index.html`，以及新生成的 `output/archive/rss-*.html` / `.json`。
 
 ## 归档与历史
 
 执行前会把旧的 `output/latest.html` / `output/latest.json` 复制到 `output/archive/`，文件名里带时间戳，默认只保留最近 30 天的版本。你可以直接在 `output/archive` 里打开历史快报，配合每日分镜会更方便。
+
+## 追踪更新
+
+脚本会在 `state/rss_state.json` 记录每个 RSS 源上一次成功抓取的时间与条目 ID（该文件已加入 `.gitignore`）。每次运行只会把新内容（基于时间戳或链接）呈现在首页，因此不会重复。你可以直接看这个文件判断什么时候有新条目。
 
 ## 静态站点（已部署至 Vercel）
 
