@@ -29,7 +29,7 @@ python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.ht
 
 ## 追踪更新
 
-脚本只会提取**最近 24 小时**内的更新（默认 `--limit 20`，补全当日多源内容），因此在首页可以看到所有当天刚出的条目。首页底部会展示“最近更新”链接列表（默认 3 条），每条直接跳到对应的归档 HTML，并提供“查看过去 7 天的资讯”按钮，进入 `output/archive/index.html` 查看完整历史索引。
+脚本只会提取**最近 24 小时**内的更新（默认 `--limit 20`，补全当日多源内容），因此在首页可以看到所有当天刚出的条目。首页底部会展示“最近更新”链接列表（默认 3 条），每条直接跳到对应的归档 HTML，方便快速回看。历史索引 `output/archive/index.html` 依然保留，列出最近 7 份归档供深度翻查。
 
 ## 静态站点（已部署至 Vercel）
 
