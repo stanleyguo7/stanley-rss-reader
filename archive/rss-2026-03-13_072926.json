@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-13T07:19:14.491861",
+  "generated": "2026-03-13T07:28:43.919764",
   "feeds": [
     {
       "source_name": "MIT Technology Review: AI",
@@ -39,36 +39,6 @@
       "feed_updated": "未知",
       "count": 20,
       "entries": [
-        {
-          "title": "热门中概股美股盘前多数下跌，理想汽车跌超3%",
-          "link": "https://36kr.com/newsflashes/3719960701041025?f=rss",
-          "published": "2026-03-12 20:59:42  +0800",
-          "summary": "36氪获悉，热门中概股美股盘前多数下跌，截至发稿，理想汽车跌超3%，百度跌超1%，阿里巴巴跌0.92%，哔哩哔哩跌0.86%，京东跌0.4%，拼多多跌0.23%；小鹏汽车涨超2%，网易、蔚来涨超1%。"
-        },
-        {
-          "title": "美股三大指数集体收跌，特斯拉跌超3%",
-          "link": "https://36kr.com/newsflashes/3720550922451337?f=rss",
-          "published": "2026-03-13 07:00:06  +0800",
-          "summary": "36氪获悉，3月12日收盘，美股三大指数集体下跌，道指跌1.56%，纳指跌1.78%，标普500指数跌1.52%。大型科技股普跌，Arm跌超4%，特斯拉跌超3%，Meta跌超2%，英伟达、苹果、亚马逊、谷歌跌超1%，奈飞、微软小幅下跌。热门中概股多数下跌，爱奇艺跌超4%，B站、理想汽车跌超2%，阿里巴巴、拼多多、百度跌超1%；小鹏汽车涨超3%，蔚来涨超1%。"
-        },
-        {
-          "title": "美国正建立关税退款系统，进度达40%至80%",
-          "link": "https://36kr.com/newsflashes/3720553658923654?f=rss",
-          "published": "2026-03-13 07:02:53  +0800",
-          "summary": "周四提交的一份法庭文件显示，美国政府正在建立一套由四个部分组成的系统，用于向企业退还1660亿美元的非法关税及利息。目前该系统的建设进度已完成40%至80%。（新浪财经）"
-        },
-        {
-          "title": "Adobe第一财季营收64亿美元",
-          "link": "https://36kr.com/newsflashes/3720553938090627?f=rss",
-          "published": "2026-03-13 07:03:10  +0800",
-          "summary": "Adobe第一财季营收64亿美元，分析师预期62.8亿美元；第一财季调整后每股收益（EPS）为6.06美元，分析师预期5.88美元。公司预计第二财季营收64.3亿-64.8亿美元，分析师预期64.3亿美元；预计第二财季调整后EPS为5.80-5.85美元，分析师预期5.70美元。（界面）"
-        },
-        {
-          "title": "马斯克旗下xAI面临联合创始人离职潮，11名创始人仅剩2人在岗",
-          "link": "https://36kr.com/newsflashes/3720554921949577?f=rss",
-          "published": "2026-03-13 07:04:10  +0800",
-          "summary": "据报道，埃隆·马斯克的AI初创公司xAI的联合创始人离职潮仍在继续。据知情人士透露，戴子航本周早些时候已经离开xAI。他在X个人资料上的xAI徽章已经消失。在此之前，已有多位xAI联合创始人离职，包括Toby Pohlen、Jimmy Ba、Tony Wu以及Greg Yang，这些人自今年1月以来陆续离开公司。在戴子航和张国栋离开之后，2023年与马斯克一起创立xAI的11名创始成员中，将只剩下两人仍在公司任职，分别是Manuel K…"
-        },
         {
           "title": "欧盟或考虑放宽碳配额规则并扩大国家援助，以遏制电价飙升",
           "link": "https://36kr.com/newsflashes/3720555774278025?f=rss",
@@ -133,7 +103,7 @@
           "title": "美联储3月维持利率不变的概率为99.1%",
           "link": "https://36kr.com/newsflashes/3720562419300736?f=rss",
           "published": "2026-03-13 07:11:48  +0800",
-          "summary": "据CME“美联储观察”：美联储到3月降息25个基点的概率为0.9%，维持利率不变的概率为99.1%。美联储到4月累计降息25个基点的概率3.9%，维持利率不变的概率为96.0%，累计降息50个基点的概率为0%。到6月累计降息25个基点的概率为19.5%。（财联社）"
+          "summary": "据CME“美联储观察”：美联储到3月降息25个基点的概率为0.9%，维持利率不变的概率为99.1%。美联储到4月累计降息25个基点的概率3.9%，维持利率不变的概率为96.0%，累计降息50个基点的概率为0%。��6月累计降息25个基点的概率为19.5%。（财联社）"
         },
         {
           "title": "Stellantis考虑与小米集团、小鹏汽车交易，以重振欧洲业务",
@@ -158,21 +128,45 @@
           "link": "https://36kr.com/newsflashes/3720568715410049?f=rss",
           "published": "2026-03-13 07:18:12  +0800",
           "summary": "米兰检察官已要求对亚马逊欧洲部门及其四名经理进行审判，他们涉嫌逃税价值约12亿欧元（13.8亿美元），两名直接了解此事的消息人士周四表示。此举在意大利的此类案件中史无前例，因为亚马逊在12月同意向意大利税务局支付包括利息在内的5.27亿欧元，以解决税务纠纷。（新浪财经）"
+        },
+        {
+          "title": "美国新屋开工意外攀升，受多户型住宅项目提振",
+          "link": "https://36kr.com/newsflashes/3720570235320705?f=rss",
+          "published": "2026-03-13 07:19:45  +0800",
+          "summary": "政府周四公布的数据显示，1月份新屋开工数增长7.2%，至折年率149万套。这一开工步伐超出接受调查的所有经济学家预估值。增长主要受多户型住宅开工飙升近30%带动，而单户型住宅开工下降。受当月下旬寒潮影响，东北部和南部单户型住宅开工减少。 尽管严寒天气可能带来影响，但报告显示，年初市场动能有所增强，抵押贷款利率下降叠加丰厚的销售激励措施有助于吸引潜在买家入市，从而慢慢消化住宅建筑商的积压库存，并对施工形成支撑。（财联社）"
+        },
+        {
+          "title": "瀚天天成电子科技（厦门）股份有限公司通过港交所上市聆讯",
+          "link": "https://36kr.com/newsflashes/3720570590476930?f=rss",
+          "published": "2026-03-13 07:20:07  +0800",
+          "summary": "36氪获悉，据港交所，瀚天天成电子科技（厦门）股份有限公司更新聆讯后资料集，意味着该公司港交所IPO通过聆讯。"
+        },
+        {
+          "title": "韩国有望因芯片热潮推出20万亿韩元追加预算",
+          "link": "https://36kr.com/newsflashes/3720572601743753?f=rss",
+          "published": "2026-03-13 07:22:10  +0800",
+          "summary": "据报道，韩国政府认为，芯片热潮带来的超额税收，有望支撑规模达20万亿韩元的追加预算，远超最初预期的约10万亿韩元。报道援引一位未具名政府官员消息称，三星电子与SK海力士今年营业利润预计均将达到约100万亿韩元。若这一目标实现，韩国在不发行国债的情况下推出20万亿韩元补充预算并非不可能。（新浪财经）"
+        },
+        {
+          "title": "亚马逊拟将“Prime Day”促销活动提前至6月",
+          "link": "https://36kr.com/newsflashes/3720573211703939?f=rss",
+          "published": "2026-03-13 07:22:47  +0800",
+          "summary": "据报道，美国电商巨头亚马逊计划将“Prime Day”促销活动提前至6月下旬举行，这对于这项已有十年历史的重要购物盛事来说，是一次罕见的日程调整。（新浪财经）"
+        },
+        {
+          "title": "增量资金持续涌入，爆款基金批量涌现",
+          "link": "https://36kr.com/newsflashes/3720577018149508?f=rss",
+          "published": "2026-03-13 07:26:39  +0800",
+          "summary": "资金借道基金入市的节奏持续加快。时隔三年多再现认购户数超20万户的主动权益类基金，部分产品甚至启动比例配售。比如，3月11日，永赢锐见成长混合基金发布基金合同生效公告，发行规模为58.67亿元，募集有效认购总户数为230427户。除了认购户数激增，部分主动权益类基金因认购资金超过募集规模上限，启动比例配售。在业内人士看来，主动权益类基金爆款重现的背后，在于基金赚钱效应显现，带动投资者入市意愿提升。（上证报）"
         }
       ]
     },
     {
       "source_name": "雷锋网 · AI科技",
       "notes": "科技与AI产业深度",
-      "feed_updated": "Fri, 13 Mar 2026 07:19:09 +0800",
-      "count": 4,
+      "feed_updated": "Fri, 13 Mar 2026 07:28:37 +0800",
+      "count": 3,
       "entries": [
-        {
-          "title": "全球首款手机龙虾秒光 OpenClaw创始人称愿与百度共同开发龙虾",
-          "link": "https://www.leiphone.com/category/industrynews/2FtUIk1mtqmNy1tz.html",
-          "published": "Thu, 12 Mar 2026 15:25:00 +0800",
-          "summary": "<p>3月12日，百度发布了全球首款手机龙虾应用——“红手指Operator”，用户下载App其即可实现手机“养虾”。上线后，迅速引爆下载热潮，系统后台资源出现紧缺提示。百度智能云回应称，正全速调配资源扩容，全力保障用户体验。</p><p style=\"text-align: center;\"><img src=\"https://static.leiphone.com/uploads/new/images/20260312/69b269…"
-        },
         {
           "title": "豆包官宣手机助手：AI 还能带来哪些新体验？",
           "link": "https://www.leiphone.com/category/industrynews/H8w4gm9ko6oHLo0z.html",
@@ -240,8 +234,8 @@
     {
       "source_name": "Film Daily",
       "notes": "影视创作与市场观察",
-      "feed_updated": "Thu, 12 Mar 2026 22:09:54 +0000",
-      "count": 4,
+      "feed_updated": "Thu, 12 Mar 2026 23:19:15 +0000",
+      "count": 5,
       "entries": [
         {
           "title": "A New Kind of Online Gaming Experience That Feels Built for the Digital Age",
@@ -266,6 +260,12 @@
           "link": "https://filmdaily.co/lifestyle/ivf-vs-iui-whats-the-difference/",
           "published": "Thu, 12 Mar 2026 20:32:46 +0000",
           "summary": "<p>Confused about IVF vs IUI? Discover what sets these fertility treatments apart and find out which could be your best shot at parenthood. Read more now!</p> <p>The post <a href=\"https://filmdaily.co/lifestyle/ivf-vs-iu…"
+        },
+        {
+          "title": "How to Handle Lost or Broken Aligners While Travelling",
+          "link": "https://filmdaily.co/lifestyle/how-to-handle-lost-or-broken-aligners-while-travelling/",
+          "published": "Thu, 12 Mar 2026 23:19:15 +0000",
+          "summary": "<p>Lost or broken aligners while traveling? Stay calm—learn smart tips to handle issues, avoid delays, and keep your smile on track no matter where you are.</p> <p>The post <a href=\"https://filmdaily.co/lifestyle/how-to-…"
         }
       ]
     }
