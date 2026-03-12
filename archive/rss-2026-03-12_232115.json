@@ -1,0 +1,273 @@
+{
+  "generated": "2026-03-12T07:13:37.699387",
+  "feeds": [
+    {
+      "source_name": "MIT Technology Review: AI",
+      "notes": "科技前沿 + AI专题",
+      "feed_updated": "Wed, 11 Mar 2026 12:47:43 +0000",
+      "count": 2,
+      "entries": [
+        {
+          "title": "The Download: Pokémon Go to train world models, and the US-China race to find aliens",
+          "link": "https://www.technologyreview.com/2026/03/11/1134174/the-download-pokemon-go-train-world-models-us-china-race-find-aliens/",
+          "published": "Wed, 11 Mar 2026 12:38:00 +0000",
+          "summary": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. How Pokémon Go is giving delivery robots an inch-perfect view of the w…"
+        },
+        {
+          "title": "Hustlers are cashing in on China’s OpenClaw AI craze",
+          "link": "https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/",
+          "published": "Wed, 11 Mar 2026 12:46:21 +0000",
+          "summary": "Feng Qingyang had always hoped to launch his own company, but he never thought this would be how—or that the day would come this fast.&#160; Feng, a 27-year-old software engineer based in Beijing, started tinkering with…"
+        }
+      ]
+    },
+    {
+      "source_name": "36氪 · 学习与思考",
+      "notes": "聚焦中国科技、影视与创业",
+      "feed_updated": "未知",
+      "count": 20,
+      "entries": [
+        {
+          "title": "优步与亚马逊旗下Zoox达成协议，将提供机器人出租车服务",
+          "link": "https://36kr.com/newsflashes/3718488166725255?f=rss",
+          "published": "2026-03-11 20:01:46  +0800",
+          "summary": "优步与亚马逊旗下Zoox达成协议，将提供机器人出租车服务。（财联社）"
+        },
+        {
+          "title": "氪星晚报 ｜新乳业：筹划发行H股股票并上市；钉钉建议企业不装龙虾；小熊电器：2025年营收52.35亿元，同比增长10.02%",
+          "link": "https://36kr.com/p/3718474228462985?f=rss",
+          "published": "2026-03-11 20:03:20  +0800",
+          "summary": "<h2>大公司：</h2> <p><strong>新乳业：筹划发行H股股票并上市</strong></p> <p>36氪获悉，新乳业公告，为满足公司业务发展需要，深入推进国际化战略，打造国际化资本运作平台，进一步提升公司资本实力，经充分研究论证，公司拟发行境外上市外资股（H股）股票并在香港联合交易所有限公司（以下简称“香港联交所”）主板挂牌上市（以下简称“本次发行并上市”）。</p> <p><strong>亚盛集团：公司未取得相关采矿资…"
+        },
+        {
+          "title": "英伟达将向Nebius投资20亿美元",
+          "link": "https://36kr.com/newsflashes/3718492781852292?f=rss",
+          "published": "2026-03-11 20:06:27  +0800",
+          "summary": "英伟达与Nebius宣布建立战略合作伙伴关系，共同开发并部署面向人工智能市场的下一代超大规模云平台，服务对象涵盖人工智能原生企业至传统企业。此外，英伟达将向Nebius投资20亿美元。（界面）"
+        },
+        {
+          "title": "OpenClaw会疯狂扣钱吗？腾讯云回应",
+          "link": "https://36kr.com/newsflashes/3718499842520450?f=rss",
+          "published": "2026-03-11 20:13:38  +0800",
+          "summary": "36氪获悉，腾讯云发文回应与OpenClaw及腾讯“龙虾”相关的安全问题。就OpenClaw是否会“疯狂”地扣用户的钱，腾讯云提到，社交平台上流传着一张截图，显示一名用户在腾讯云公益装机活动上安装OpenClaw之后出现高额费用“偷跑”，累计200多元。腾讯云回应称，经后台排查及核实，这200多元是这名用户此前的历史模型调用费用。“OpenClaw安装本身免费，但如果使用过程中调用大模型，就会产生token费用，目前基本所有Agent工…"
+        },
+        {
+          "title": "巴西最大糖业公司Raizen达成126亿美元债务重组协议",
+          "link": "https://36kr.com/newsflashes/3718501310477698?f=rss",
+          "published": "2026-03-11 20:15:08  +0800",
+          "summary": "3月11日，据报道，巴西最大的糖业和乙醇公司Raizen表示，已与债权人和债券持有人达成庭外债务重组协议，涉及约651亿雷亚尔（约合126.1亿美元）的债务。Raizen是巴西企业集团Cosan SA和石油巨头壳牌公司的合资企业，此前报道称，该公司正在考虑潜在的资产出售，并停止建设新工厂的项目，以努力减少债务。（界面）"
+        },
+        {
+          "title": "存储产能争夺战再升温，AMD欲联手三星电子锁定HBM供给",
+          "link": "https://36kr.com/newsflashes/3718503737030019?f=rss",
+          "published": "2026-03-11 20:17:36  +0800",
+          "summary": "知情人士表示，AMD首席执行官苏姿丰将于下周在韩国会见韩国科技霸主三星电子会长李在镕，双方将重点讨论在用于人工智能芯片组件的高带宽存储（即HBM存储系统）供应保障方面开展积极合作。知情人士表示，预计苏姿丰还将与韩国最大互联网门户和搜索引擎提供商Naver讨论更广泛的AI算力基础设施合作前景。（财联社）"
+        },
+        {
+          "title": "美国2月消费者价格指数（CPI）同比增长2.4%",
+          "link": "https://36kr.com/newsflashes/3718517129229961?f=rss",
+          "published": "2026-03-11 20:31:14  +0800",
+          "summary": "美国2月消费者价格指数（CPI）同比增长2.4%，预估为2.4%，前值为2.4%；美国2月核心CPI同比增长2.5%，预估为2.5%，前值为2.5%。（财联社）"
+        },
+        {
+          "title": "美股大型科技股盘前多数上涨，Arm涨0.29%",
+          "link": "https://36kr.com/newsflashes/3718522919040642?f=rss",
+          "published": "2026-03-11 20:37:07  +0800",
+          "summary": "36氪获悉，美股大型科技股盘前多数上涨，截至发稿，Arm涨0.29%，特斯拉涨0.21%，英伟达涨0.07%，亚马逊、微软涨0.06%；Meya跌0.06%，苹果跌0.09%。"
+        },
+        {
+          "title": "热门中概股美股盘前涨跌不一，蔚来跌超2%",
+          "link": "https://36kr.com/newsflashes/3718524719543937?f=rss",
+          "published": "2026-03-11 20:38:57  +0800",
+          "summary": "36氪获悉，热门中概股美股盘前涨跌不一，截至发稿，B站、蔚来跌超2%，阿里巴巴跌超1%，腾讯音乐跌0.86%，京东跌0.16%，拼多多跌0.15%；理想汽车涨超2%，小鹏汽车涨超1%，爱奇艺涨0.71%，微博涨0.2%。"
+        },
+        {
+          "title": "亚马逊计划通过八期欧元债券发行筹集125亿欧元",
+          "link": "https://36kr.com/newsflashes/3718526680331648?f=rss",
+          "published": "2026-03-11 20:40:56  +0800",
+          "summary": "亚马逊计划通过八期欧元债券发行筹集125亿欧元。（新浪财经）"
+        },
+        {
+          "title": "谷歌完成对网络安全初创公司Wiz的收购",
+          "link": "https://36kr.com/newsflashes/3718528530593153?f=rss",
+          "published": "2026-03-11 20:42:49  +0800",
+          "summary": "谷歌完成对网络安全初创公司Wiz的收购。（财联社）"
+        },
+        {
+          "title": "华为云OpenClaw体验计划上线",
+          "link": "https://36kr.com/newsflashes/3718535531312513?f=rss",
+          "published": "2026-03-11 20:49:57  +0800",
+          "summary": "36氪获悉，华为云开启OpenClaw体验计划，支持用户将“龙虾”部署在华为云上，与本地隐私数据进行隔离。"
+        },
+        {
+          "title": "盛科通信：近期国家集成电路产业投资基金减持1%公司股份",
+          "link": "https://36kr.com/newsflashes/3718536146253193?f=rss",
+          "published": "2026-03-11 20:50:34  +0800",
+          "summary": "36氪获悉，盛科通信公告，公司收到持股5%以上股东国家集成电路产业投资基金股份有限公司的告知函，其在2026年3月2日至2026年3月11日期间，通过集中竞价方式减持公司股份410万股，占公司总股本的比例由13.00%减少至12.00%，权益变动触及1%刻度。此次权益变动为非第一大股东减持所致，不触及要约收购，不会导致无控股股东及实际控制人的情况发生变化，不会对公司治理结构及持续经营产生重大影响。"
+        },
+        {
+          "title": "天味食品：2025年净利润同比下降8.79%，拟10派5.5元",
+          "link": "https://36kr.com/newsflashes/3718539852019079?f=rss",
+          "published": "2026-03-11 20:54:20  +0800",
+          "summary": "36氪获悉，天味食品发布2025年年度报告。报告显示，公司实现营业收入34.49亿元，同比下降0.79%；归属于上市公司股东的净利润5.70亿元，同比下降8.79%。公司拟向全体股东每股派发现金红利0.55元（含税），即每10股派5.5元（含税）。"
+        },
+        {
+          "title": "美股三大指数收盘涨跌不一，甲骨文涨超9%",
+          "link": "https://36kr.com/newsflashes/3719080855631237?f=rss",
+          "published": "2026-03-12 07:00:00  +0800",
+          "summary": "36氪获悉，3月11日收盘，美股三大指数涨跌不一，道指跌0.61%，纳指涨0.08%，标普500指数跌0.08%。大型科技股涨跌互现，甲骨文涨超9%，特斯拉涨超2%，英伟达、谷歌、Meta小幅上涨；奈飞跌超2%，亚马逊、微软、苹果小幅下跌。热门中概股多数下跌，爱奇艺、蔚来跌超4%，哔哩哔哩跌超3%，老虎证券、网易跌超2%，拼多多跌超1%；理想汽车、小鹏汽车涨超2%，京东涨超1%。"
+        },
+        {
+          "title": "Pershing Square申请在纽交所上市",
+          "link": "https://36kr.com/newsflashes/3718682981054083?f=rss",
+          "published": "2026-03-12 07:03:23  +0800",
+          "summary": "比尔·阿克曼的Pershing Square Capital Management PS及其新成立的封闭式基金PSUS将在纽约证券交易所上市，目标募资50亿至100亿美元，为散户提供投资渠道，同时持有优步和亚马逊等投资组合公司的股份。（新浪财经）"
+        },
+        {
+          "title": "欧佩克维持2026年和2027年全球原油需求增长预期不变",
+          "link": "https://36kr.com/newsflashes/3718684849370754?f=rss",
+          "published": "2026-03-12 07:06:32  +0800",
+          "summary": "3月11日，欧佩克月报显示，欧佩克维持2026年和2027年全球原油需求增长预期不变。欧佩克+成员国2026年2月原油产量平均为4272万桶/日，较1月增加44.5万桶/日。（界面）"
+        },
+        {
+          "title": "三菱日联金融集团与印度国家银行签署协议促进跨境交易",
+          "link": "https://36kr.com/newsflashes/3718685338940805?f=rss",
+          "published": "2026-03-12 07:09:06  +0800",
+          "summary": "3月11日，据报道，日本三菱日联金融集团与印度国家银行建立合作关系，将探索在印度的并购机会。除并购外，此次合作还将聚焦航空和房地产金融等领域。（界面）"
+        },
+        {
+          "title": "特朗普称美国将“略微”削减战略石油储备",
+          "link": "https://36kr.com/newsflashes/3719145365616002?f=rss",
+          "published": "2026-03-12 07:10:18  +0800",
+          "summary": "当地时间3月11日，总台记者获悉，美国总统特朗普表示，他将动用美国战略石油储备来缓解因伊朗战争而飙升的油价。特朗普当日在访问辛辛那提地区期间接受采访时表示：“我们会这么做，然后再把它填满。现在，我们会略微削减一下，这样就能降低油价。”（央视新闻）"
+        },
+        {
+          "title": "美国汽油均价升至21个多月以来最高水平",
+          "link": "https://36kr.com/newsflashes/3718687110460808?f=rss",
+          "published": "2026-03-12 07:11:56  +0800",
+          "summary": "当地时间3月11日，美国汽车协会最新数据显示，美国汽油平均价格升至每加仑3.58美元，创21个多月以来最高水平。数据显示，过去一周美国汽油价格累计上涨38美分，过去一个月上涨64美分，为2022年3月以来最大周涨幅和月涨幅。目前油价较一个月前上涨约22%。与此同时，美国柴油价格上涨更快。最新数据显示，柴油平均价格上涨5美分至每加仑4.89美元，过去一周累计上涨79美分。（央视新闻）"
+        }
+      ]
+    },
+    {
+      "source_name": "雷锋网 · AI科技",
+      "notes": "科技与AI产业深度",
+      "feed_updated": "Thu, 12 Mar 2026 07:13:33 +0800",
+      "count": 3,
+      "entries": [
+        {
+          "title": "追觅芯际穿越“天穹”系列芯片正式量产，定义AI时代下一个十年",
+          "link": "https://www.leiphone.com/category/industrynews/nNYigIDy8gKNhuYv.html",
+          "published": "Wed, 11 Mar 2026 17:34:00 +0800",
+          "summary": "<p>2026年3月11日，在由追觅科技与央视财经联合主办的“AWE2026芯片产业高峰论坛”上，追觅生态企业芯际穿越正式发布“天穹”系列芯片，并宣布已实现规模化量产，即将搭载于追觅泛机器人系列产品中。与此同时，芯际穿越还披露了其太空算力布局的最新进展——近期将发射“瑶台”系列太空算力盒，启动近地轨道超级算力中心建设第一步，这标志着芯际穿越从研发阶段正式迈入产业化阶段。</p><p>论坛现场，芯际穿越首次向全球展示了其覆盖智能化终端到太…"
+        },
+        {
+          "title": "S26新机开售，三星称即时零售带来惊喜：美团闪购成预售量最高平台之一",
+          "link": "https://www.leiphone.com/category/industrynews/Ai5YMqUe1YwxdmtM.html",
+          "published": "Wed, 11 Mar 2026 18:13:00 +0800",
+          "summary": "<p>3月11日，三星新款旗舰手机Galaxy S26系列正式开售。因其搭载了世界首个“隐私屏”的防窥功能，以及与Gemini合作的Galaxy AI，S26系列在预售期间表现出极高热度。有报道称，在韩国本土，Galaxy S26创下了该系列的最高预售记录，定位最高的Galaxy S26 Ultra最受消费者欢迎。</p><p>在中国市场，以即时零售为代表的新兴渠道异军突起，成为三星新机的突出销售趋势变化。记者了解到，三星今年首次选择在…"
+        },
+        {
+          "title": "美团升级食安治理大模型“星眸”：覆盖百万外卖商家，日巡检后厨千万次",
+          "link": "https://www.leiphone.com/category/industrynews/eDytkKdcAREz03cQ.html",
+          "published": "Wed, 11 Mar 2026 18:15:00 +0800",
+          "summary": "<p>“3·15”将近，外卖食品安全成为社会关注焦点。近日，美团大模型“星眸”全面升级，应用范围从主要聚焦后厨识别，扩展到商家入驻审核、门店真实性核验、后厨环境预警等多个环节。一个覆盖全流程的智能、主动的食安治理体系正加速建成。</p><p>据了解，“星眸”大模型上线于2025年4月，首先应用于食品安全治理。本次升级后，在门店真实性核验方面，“星眸”可以审核全量外卖商家上传的门头图和一镜到底视频；异常环境识别方面，“星眸”日均巡检后厨1…"
+        }
+      ]
+    },
+    {
+      "source_name": "量子位",
+      "notes": "AI、量子和芯片观察",
+      "feed_updated": "Wed, 11 Mar 2026 09:30:58 +0000",
+      "count": 6,
+      "entries": [
+        {
+          "title": "ChatGPT和Claude争了个寂寞！用户重叠仅11%，中国应用霸榜移动端",
+          "link": "https://www.qbitai.com/2026/03/386114.html",
+          "published": "Wed, 11 Mar 2026 07:45:16 +0000",
+          "summary": "a16z发布Top100 GenAI应用榜"
+        },
+        {
+          "title": "养虾人狂吃国产模型！4.19万亿Token调用量激增34.9%超越美国",
+          "link": "https://www.qbitai.com/2026/03/386183.html",
+          "published": "Wed, 11 Mar 2026 08:41:27 +0000",
+          "summary": "国产模型包揽龙虾应用前三"
+        },
+        {
+          "title": "499上门装龙虾的人，开始赚299卸载龙虾的钱了",
+          "link": "https://www.qbitai.com/2026/03/386235.html",
+          "published": "Wed, 11 Mar 2026 08:44:07 +0000",
+          "summary": "「卸虾」业务太火爆"
+        },
+        {
+          "title": "对话「哈萨比斯传」作者：“他不喜欢奥特曼”",
+          "link": "https://www.qbitai.com/2026/03/386285.html",
+          "published": "Wed, 11 Mar 2026 09:22:08 +0000",
+          "summary": "如何成为哈萨比斯？"
+        },
+        {
+          "title": "LeCun三顾茅庐，谢赛宁终于入伙！新公司获投10亿美元",
+          "link": "https://www.qbitai.com/2026/03/386308.html",
+          "published": "Wed, 11 Mar 2026 09:26:42 +0000",
+          "summary": "成立两个月半，估值35亿！"
+        },
+        {
+          "title": "让龙虾看懂屏幕！谷歌多模态新成果，文本图像视频音频进同一空间",
+          "link": "https://www.qbitai.com/2026/03/386485.html",
+          "published": "Wed, 11 Mar 2026 09:30:54 +0000",
+          "summary": "谷歌首个原生多模态（Multimodal）嵌入模型"
+        }
+      ]
+    },
+    {
+      "source_name": "Film Daily",
+      "notes": "影视创作与市场观察",
+      "feed_updated": "Wed, 11 Mar 2026 23:07:32 +0000",
+      "count": 7,
+      "entries": [
+        {
+          "title": "Who is the new Lady Whistledown in ‘Bridgerton’?",
+          "link": "https://filmdaily.co/news/who-is-the-new-lady-whistledown-in-bridgerton/",
+          "published": "Wed, 11 Mar 2026 22:35:54 +0000",
+          "summary": "<p>Discover who the new Lady Whistledown is in 'Bridgerton' with our latest deep dive. Unmask suspects, secret clues, and Regency pettiness—this gossip game isn't over yet!</p> <p>The post <a href=\"https://filmdaily.co/n…"
+        },
+        {
+          "title": "Is Criss Angel selling tickets after bombshell claims?",
+          "link": "https://filmdaily.co/news/is-criss-angel-selling-tickets-after-bombshell-claims/",
+          "published": "Wed, 11 Mar 2026 22:37:55 +0000",
+          "summary": "<p>Is Criss Angel selling tickets after bombshell claims? Discover how legal drama and scandal haven’t dimmed the allure—Criss Angel tickets remain hot for 2026. Read the full story!</p> <p>The post <a href=\"https://film…"
+        },
+        {
+          "title": "Behind Harry and Meghan’s come back down under!",
+          "link": "https://filmdaily.co/news/behind-harry-and-meghans-come-back-down-under/",
+          "published": "Wed, 11 Mar 2026 22:39:31 +0000",
+          "summary": "<p>Discover how Harry and Meghan’s Australian comeback is stirring debates on monarchy, relevance, and independence—will their trip revive or derail their post-royal journey?</p> <p>The post <a href=\"https://filmdaily.co…"
+        },
+        {
+          "title": "What did court documents say about Andrew’s contact with Epstein?",
+          "link": "https://filmdaily.co/news/what-did-court-documents-say-about-andrews-contact-with-epstein/",
+          "published": "Wed, 11 Mar 2026 22:41:39 +0000",
+          "summary": "<p>Unsealed court documents reveal Andrew Epstein ties, including Jeffrey Epstein encounters and questionable communications. Dive into the scandal shaping royal history and justice.</p> <p>The post <a href=\"https://film…"
+        },
+        {
+          "title": "Was Rhianna’s shooter going after her net worth?",
+          "link": "https://filmdaily.co/news/was-rhiannas-shooter-going-after-her-net-worth/",
+          "published": "Wed, 11 Mar 2026 22:45:34 +0000",
+          "summary": "<p>Is Rihanna’s net worth a target? Discover how her $1.4B empire may have fueled a dangerous obsession—and why fame’s dark side puts stars like her at risky crosshairs.</p> <p>The post <a href=\"https://filmdaily.co/news…"
+        },
+        {
+          "title": "Was Carolyn Bessette really a kinky coke head?",
+          "link": "https://filmdaily.co/news/was-carolyn-bessette-really-a-kinky-coke-head/",
+          "published": "Wed, 11 Mar 2026 23:03:07 +0000",
+          "summary": "<p>Is Carolyn Bessette really a kinky coke head? Discover the truth behind Hollywood gossip, a timeline of rumors, and why sensationalized stories threaten her true legacy in this revealing article.</p> <p>The post <a hr…"
+        },
+        {
+          "title": "Are bad reviews why ‘With Love Meghan’ got canned?",
+          "link": "https://filmdaily.co/news/are-bad-reviews-why-with-love-meghan-got-canned/",
+          "published": "Wed, 11 Mar 2026 23:07:32 +0000",
+          "summary": "<p>Discover how harsh With Love Meghan reviews may have sealed its fate, revealing a Hollywood tale of canceled shows, brand struggles, and Markle’s next move.</p> <p>The post <a href=\"https://filmdaily.co/news/are-bad-r…"
+        }
+      ]
+    }
+  ]
+}
