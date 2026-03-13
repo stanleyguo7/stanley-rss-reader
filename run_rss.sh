@@ -16,4 +16,8 @@ if [ -f "$MQTT_CRED_FILE" ]; then
   export MQTT_PASSWORD="$(grep '^MQTT_PASSWORD=' "$MQTT_CRED_FILE" | cut -d= -f2-)"
 fi
 
-python scripts/fetch_rss.py --limit 20 --git
+if [ "${RSS_GIT_SYNC:-0}" = "1" ]; then
+  python scripts/fetch_rss.py --limit 20 --git
+else
+  python scripts/fetch_rss.py --limit 20
+fi
