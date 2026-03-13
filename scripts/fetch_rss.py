@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch RSS sources and publish normalized JSON + RSS feed + MQTT summary."""
+"""Fetch RSS sources and persist snapshot into SQLite (plus JSON/XML exports)."""
 
 from __future__ import annotations
 
@@ -10,15 +10,19 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
-import xml.etree.ElementTree as ET
-from email.utils import format_datetime
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import feedparser
 from paho.mqtt import publish
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+from app.feed import build_feed_xml
+from app.storage import get_conn, save_snapshot
 MAX_PER_SOURCE = 20
 REST_WINDOW_HOURS = 24
 
@@ -29,7 +33,6 @@ MQTT_TOPIC_CONFIG = "homeassistant/sensor/it_rss_brief_mqtt/config"
 def safe_excerpt(text: str, length: int = 220) -> str:
     if not text:
         return ""
-    # strip basic html tags and collapse spaces
     clean = re.sub(r"<[^>]+>", " ", text)
     clean = " ".join(html.unescape(clean).split())
     if len(clean) <= length:
@@ -52,21 +55,10 @@ def parse_entry_ts(entry: dict) -> dt.datetime | None:
         st = entry.get(key)
         if st:
             return dt.datetime.fromtimestamp(time.mktime(st), dt.timezone.utc)
-    for key in ("published", "updated"):
-        text = entry.get(key)
-        if not text:
-            continue
-        try:
-            parsed = dt.datetime.fromisoformat(text)
-            if parsed.tzinfo:
-                return parsed.astimezone(dt.timezone.utc)
-            return parsed.replace(tzinfo=dt.timezone.utc)
-        except ValueError:
-            continue
     return None
 
 
-def gather_source(feed_cfg: dict, threshold: dt.datetime, limit: int) -> tuple[dict | None, list[dict]]:
+def gather_source(feed_cfg: dict, threshold: dt.datetime, limit: int) -> tuple[dict | None, int]:
     parsed = feedparser.parse(feed_cfg["url"])
     picked: list[tuple[dt.datetime, dict]] = []
     for entry in parsed.entries:
@@ -77,20 +69,19 @@ def gather_source(feed_cfg: dict, threshold: dt.datetime, limit: int) -> tuple[d
     picked = picked[-limit:]
 
     entries: list[dict] = []
-    flat: list[dict] = []
     for ts, e in picked:
-        item = {
-            "title": e.get("title", "(no title)"),
-            "link": e.get("link", ""),
-            "published": e.get("published", e.get("updated", "")),
-            "published_ts": ts.isoformat(),
-            "summary": safe_excerpt(e.get("summary", e.get("description", ""))),
-        }
-        entries.append(item)
-        flat.append({"source_name": feed_cfg["name"], **item})
+        entries.append(
+            {
+                "title": e.get("title", "(no title)"),
+                "link": e.get("link", ""),
+                "published": e.get("published", e.get("updated", "")),
+                "published_ts": ts.isoformat(),
+                "summary": safe_excerpt(e.get("summary", e.get("description", ""))),
+            }
+        )
 
     if not entries:
-        return None, []
+        return None, 0
 
     section = {
         "source_name": feed_cfg["name"],
@@ -99,44 +90,19 @@ def gather_source(feed_cfg: dict, threshold: dt.datetime, limit: int) -> tuple[d
         "count": len(entries),
         "entries": entries,
     }
-    return section, flat
+    return section, len(entries)
 
 
-def build_feed_xml(items: list[dict], generated: dt.datetime) -> str:
-    rss = ET.Element("rss", attrib={"version": "2.0"})
-    ch = ET.SubElement(rss, "channel")
-    ET.SubElement(ch, "title").text = "Stanley RSS Digest"
-    ET.SubElement(ch, "link").text = "https://stanley-rss-reader.vercel.app/"
-    ET.SubElement(ch, "description").text = "Aggregated latest tech/news items"
-    ET.SubElement(ch, "language").text = "zh-CN"
-    ET.SubElement(ch, "lastBuildDate").text = format_datetime(generated.astimezone(dt.timezone.utc))
-
-    # latest first
-    items_sorted = sorted(items, key=lambda x: x.get("published_ts", ""), reverse=True)
-    for it in items_sorted:
-        node = ET.SubElement(ch, "item")
-        ET.SubElement(node, "title").text = f"[{it['source_name']}] {it['title']}"
-        ET.SubElement(node, "link").text = it["link"]
-        ET.SubElement(node, "guid").text = it["link"] or f"{it['source_name']}::{it['title']}"
-        ET.SubElement(node, "description").text = it.get("summary", "")
-        if it.get("published_ts"):
-            try:
-                pub_dt = dt.datetime.fromisoformat(it["published_ts"])
-                ET.SubElement(node, "pubDate").text = format_datetime(pub_dt.astimezone(dt.timezone.utc))
-            except Exception:
-                pass
-        ET.SubElement(node, "category").text = it["source_name"]
-
-    xml_bytes = ET.tostring(rss, encoding="utf-8", xml_declaration=True)
-    return xml_bytes.decode("utf-8")
-
-
-def build_dashboard_summary(sections: list[dict], max_chars: int = 12000) -> tuple[str, int]:
+def build_dashboard_summary(sections: list[dict], max_bytes: int = 12000) -> tuple[str, int]:
     lines: list[str] = []
     total = 0
+
+    def cur(extra: str = "") -> int:
+        return len(("\n".join(lines) + extra).encode("utf-8"))
+
     for sec in sections:
         header = f"---\n## 栏目｜{sec['source_name']}\n"
-        if len("\n".join(lines)) + len(header) > max_chars:
+        if cur(header) > max_bytes:
             break
         lines.append(header)
         for e in sec["entries"]:
@@ -148,7 +114,7 @@ def build_dashboard_summary(sections: list[dict], max_chars: int = 12000) -> tup
             block.append(f"[查看原文]({e['link']})")
             block.append("")
             text = "\n".join(block)
-            if len("\n".join(lines)) + len(text) > max_chars:
+            if cur("\n" + text) > max_bytes:
                 return "\n".join(lines).strip(), total
             lines.append(text)
             total += 1
@@ -179,12 +145,7 @@ def publish_to_mqtt(generated: str, summary: str, count: int) -> None:
     publish.single(MQTT_TOPIC_CONFIG, payload=config_payload, qos=1, retain=True, hostname=host, port=port, auth=auth)
 
     payload = json.dumps(
-        {
-            "generated": generated,
-            "count": count,
-            "summary": summary,
-            "source": "rss-script/mqtt-direct",
-        },
+        {"generated": generated, "count": count, "summary": summary, "source": "rss-script/mqtt-direct"},
         ensure_ascii=False,
     )
     publish.single(MQTT_TOPIC_STATE, payload=payload, qos=1, retain=False, hostname=host, port=port, auth=auth)
@@ -199,39 +160,40 @@ def git_commit_push(now: dt.datetime) -> None:
 
 def main() -> None:
     args = parse_args()
-    sources = json.loads(args.sources.read_text())
+    sources = json.loads(args.sources.read_text(encoding="utf-8"))
     threshold = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=REST_WINDOW_HOURS)
 
     sections: list[dict] = []
-    flat_items: list[dict] = []
     counts: list[str] = []
-
     for src in sources:
-        section, flat = gather_source(src, threshold, args.limit)
-        counts.append(f"{src['name']}({len(flat)})")
+        section, count = gather_source(src, threshold, args.limit)
+        counts.append(f"{src['name']}({count})")
         if section:
             sections.append(section)
-            flat_items.extend(flat)
 
-    now = dt.datetime.now(dt.timezone.utc)
-    payload = {
-        "generated": now.isoformat(),
-        "feeds": sections,
-        "items": sorted(flat_items, key=lambda x: x.get("published_ts", ""), reverse=True),
-    }
+    generated = dt.datetime.now(dt.timezone.utc).isoformat()
+    with get_conn() as conn:
+        save_snapshot(conn, generated, sections)
+
+    items = sorted(
+        [dict(source_name=f["source_name"], **e) for f in sections for e in f.get("entries", [])],
+        key=lambda x: x.get("published_ts", ""),
+        reverse=True,
+    )
+    payload = {"generated": generated, "feeds": sections, "items": items}
 
     args.summary_json.parent.mkdir(parents=True, exist_ok=True)
     args.rss_xml.parent.mkdir(parents=True, exist_ok=True)
     args.summary_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    args.rss_xml.write_text(build_feed_xml(payload["items"], now), encoding="utf-8")
+    args.rss_xml.write_text(build_feed_xml(items, generated), encoding="utf-8")
 
-    summary_text, item_count = build_dashboard_summary(sections)
-    mqtt_summary = f"**RSS更新时间：** {now.isoformat()}\n\n{summary_text}" if summary_text else f"**RSS更新时间：** {now.isoformat()}\n\n暂无资讯"
-    publish_to_mqtt(now.isoformat(), mqtt_summary, item_count)
+    summary, cnt = build_dashboard_summary(sections)
+    mqtt_summary = f"**RSS更新时间：** {generated}\n\n{summary}" if summary else f"**RSS更新时间：** {generated}\n\n暂无资讯"
+    publish_to_mqtt(generated, mqtt_summary, cnt)
 
     print(" | ".join(counts))
     if args.git:
-        git_commit_push(now)
+        git_commit_push(dt.datetime.now(dt.timezone.utc))
 
 
 if __name__ == "__main__":
