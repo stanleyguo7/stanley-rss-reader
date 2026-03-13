@@ -1,5 +1,7 @@
 .venv/
 output/*
 !output/latest.json
-!output/latest.xml
+!output/feed.xml
 state/rss_state.json
+logs/*
+app/__pycache__/

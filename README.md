@@ -1,44 +1,44 @@
 # Stanley RSS Reader
 
-重构后：
-- 抓取脚本只负责产出**结构化数据**（JSON + RSS XML）
-- Web 服务运行时渲染 HTML
-- RSS 可对外订阅
+重构后：**抓取产出数据（JSON + RSS XML）**，由 Web 服务实时渲染 HTML。
 
-## 产物
+## 目录
 
-- `output/latest.json`：聚合后的结构化数据
-- `output/latest.xml`：本地 RSS 输出
-- `feed.xml`：对外订阅入口（仓库根目录）
-- `archive/rss-*.json|xml`：历史快照
+- `scripts/fetch_rss.py`：抓取 RSS，写入 `output/latest.json` + `output/feed.xml`，并推送 MQTT 摘要给 HA。
+- `app/server.py`：FastAPI 服务。
+- `app/templates/index.html`：页面模板（杂志风可继续调）。
+- `output/latest.json`：结构化聚合结果（给前端/API/自动化）。
+- `output/feed.xml`：标准 RSS 2.0，对外可订阅。
+- `rss_sources.json`：订阅源配置。
 
-## 运行
+## 本地运行
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 
-# 1) 抓取并生成 JSON + RSS
+# 先抓数据
 python scripts/fetch_rss.py --limit 20
 
-# 2) 启动 Web 服务（动态渲染 HTML）
-uvicorn app.server:app --host 0.0.0.0 --port 8099
+# 起服务
+uvicorn app.server:app --host 0.0.0.0 --port 8090
 ```
 
-访问：
-- `http://<host>:8099/` 页面
-- `http://<host>:8099/feed.xml` RSS 订阅
-- `http://<host>:8099/api/news` JSON API
+打开：
+- `http://localhost:8090/` 页面
+- `http://localhost:8090/feed.xml` RSS 订阅
+- `http://localhost:8090/api/news` JSON API
 
 ## 定时任务
 
-`run_rss.sh` + crontab 仍在每天 07:00 执行：
-- 抓取数据
-- 更新 `output/latest.json` / `feed.xml`
-- 发布 MQTT 摘要到 Home Assistant
-- 自动 commit + push
+`run_rss.sh` + `rss-cron.tab` 每天 07:00 执行：
+
+- 抓取并更新 `output/latest.json` / `output/feed.xml`
+- 发布 MQTT 状态给 HA
+- `--git` 自动 commit + push
 
 ## 说明
 
-当前静态 HTML 已不再作为主产物。展示层由 `app/server.py` 运行时渲染，后续改排版只需要改模板 `app/templates/index.html`。
+不再每次生成静态 HTML 文件（`index.html` / `output/latest.html`）。
+页面展示由 Web 服务按最新 JSON 实时渲染。
