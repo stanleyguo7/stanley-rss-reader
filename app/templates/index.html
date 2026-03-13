@@ -28,7 +28,7 @@
   <div class="top">
     <div>
       <h1>RSS 情报摘要</h1>
-      <div class="muted">更新时间：{{ data.generated or '暂无' }}</div>
+      <div class="muted">更新时间：{{ data.generated_display or '暂无' }}（北京时间）</div>
     </div>
     <div><a href="/feed.xml">订阅 RSS</a> · <a href="/api/news">JSON API</a></div>
   </div>
@@ -37,11 +37,11 @@
     {% for feed in data.feeds %}
       <section>
         <h2>{{ feed.source_name }}</h2>
-        <div class="meta">{{ feed.notes }} · {{ feed.count }} 条 · 最后更新：{{ feed.feed_updated }}</div>
+        <div class="meta">{{ feed.notes }} · {{ feed.count }} 条 · 最后更新：{{ feed.feed_updated_display or '未知' }}（北京时间）</div>
         {% for item in feed.entries %}
           <article>
             <h3>{{ item.title }}</h3>
-            {% if item.published %}<div class="time">{{ item.published }}</div>{% endif %}
+            {% if item.published_display %}<div class="time">{{ item.published_display }}（北京时间）</div>{% endif %}
             {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
             <div class="link"><a href="{{ item.link }}" target="_blank" rel="noopener">查看原文</a></div>
           </article>
