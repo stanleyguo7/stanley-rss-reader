@@ -1,45 +1,44 @@
 # Stanley RSS Reader
 
-这是为你打造的个人资讯看板，专注于科技 / AI / 影视等领域的 RSS 源，定期抓取、整理并生成 HTML 快报，方便随时打开主页快速追踪最新内容。
+重构后：
+- 抓取脚本只负责产出**结构化数据**（JSON + RSS XML）
+- Web 服务运行时渲染 HTML
+- RSS 可对外订阅
 
-## 结构说明
+## 产物
 
-- `rss_sources.json`：保存你希望追踪的 RSS 源（名称、链接、简要说明）。
-- `scripts/fetch_rss.py`：从 RSS 里提取最新条目，生成 HTML 和 JSON 摘要。
-- `output/latest.html`：自动生成的资讯页面（通过 `fetch_rss.py` 产出）。
-- `output/latest.json`：结构化摘要，便于内部自动化或分享。
-- `requirements.txt`：依赖说明（当前只需要 `feedparser`）。
+- `output/latest.json`：聚合后的结构化数据
+- `output/latest.xml`：本地 RSS 输出
+- `feed.xml`：对外订阅入口（仓库根目录）
+- `archive/rss-*.json|xml`：历史快照
 
-## 本地运行
+## 运行
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python scripts/fetch_rss.py --sources rss_sources.json --output output/latest.html --summary-json output/latest.json
+
+# 1) 抓取并生成 JSON + RSS
+python scripts/fetch_rss.py --limit 20
+
+# 2) 启动 Web 服务（动态渲染 HTML）
+uvicorn app.server:app --host 0.0.0.0 --port 8099
 ```
 
-默认会抓取每个源自上次成功运行后的所有新内容（单源最多 20 条，合计约 160 条），并以栅格卡片形式展示：标题+摘要+“阅读原文”按钮，原始链接不再直接暴露，更方便阅读。脚本默认就是 `--limit 20`，你可以在命令里加 `--limit 5`（或更大）额外限制单次最多拉多少条更新。
+访问：
+- `http://<host>:8099/` 页面
+- `http://<host>:8099/feed.xml` RSS 订阅
+- `http://<host>:8099/api/news` JSON API
 
-想让脚本直接把文件 `git add` / `commit` / `push` 回 GitHub？加上 `--git` 开关，脚本会在当前工作区自动提交当天最新的 `output/latest.html`、`output/latest.json`、根目录 `index.html`，以及新生成的 `output/archive/rss-*.html` / `.json`。
+## 定时任务
 
-## 归档与历史
+`run_rss.sh` + crontab 仍在每天 07:00 执行：
+- 抓取数据
+- 更新 `output/latest.json` / `feed.xml`
+- 发布 MQTT 摘要到 Home Assistant
+- 自动 commit + push
 
-执行前会把旧的 `output/latest.html` / `output/latest.json` 复制到 `output/archive/`，文件名里带时间戳，默认只保留最近 30 天的版本。你可以直接在 `output/archive` 里打开历史快报，配合每日分镜会更方便。
+## 说明
 
-## 追踪更新
-
-脚本只会提取**最近 24 小时**内的更新（默认 `--limit 20`，补全当日多源内容），因此首页内容始终反映当天最新条目。首页底部的“最近更新”链接列出最近 3 个归档 HTML（`archive/rss-xxxx.html`），在 Vercel 上可通过 `https://stanley-rss-reader.vercel.app/archive/rss-xxxx.html` 直接访问。历史索引 `output/archive/index.html` 同样保留，用于浏览最近 7 份归档。
-## 静态站点（已部署至 Vercel）
-
-我们已经把 `index.html` 设为项目主页，Vercel 会展示最新的 `output/latest.html` 内容（脚本运行后也更新 `index.html`），你可以把这个链接分享给团队成员或直接在飞书里发当前 deploy 网址。
-
-## 定时运行
-
-本地的 `run_rss.sh` + `rss-cron.tab` 会在每天 07:00（系统 crontab）执行：
-
-- 激活 `.venv` 并运行 `python scripts/fetch_rss.py --limit 20 --git`
-- 归档 `output/latest.*` 到 `output/archive/`（保留 30 天）并同步更新 `index.html`
-- 自动提交并推送最新快报，便于 Vercel 首页实时呈现
-
-如此一来只要在分镜/剧情会议前打开项目主页（`https://stanley-rss-reader.vercel.app/`），就能看到当日新鲜的资讯。
+当前静态 HTML 已不再作为主产物。展示层由 `app/server.py` 运行时渲染，后续改排版只需要改模板 `app/templates/index.html`。

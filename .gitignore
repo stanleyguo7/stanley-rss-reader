@@ -1,5 +1,5 @@
 .venv/
 output/*
-!output/latest.html
 !output/latest.json
+!output/latest.xml
 state/rss_state.json
