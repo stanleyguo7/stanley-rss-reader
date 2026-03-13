@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  rss-web:
+    build: .
+    container_name: stanley-rss-web
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./rss_sources.json:/app/rss_sources.json:ro

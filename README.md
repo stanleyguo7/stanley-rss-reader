@@ -29,12 +29,23 @@ uvicorn app.server:app --host 0.0.0.0 --port 8090
 - `http://localhost:8090/api/news`
 - `http://localhost:8090/feed.xml`
 
-## 定时任务（云端建议）
-
-cron 只需定时跑抓取脚本：
+## Docker 部署（推荐云端）
 
 ```bash
-python scripts/fetch_rss.py --limit 20
+docker compose up -d --build
+```
+
+访问：
+- `http://<host>:8090/`
+- `http://<host>:8090/api/news`
+- `http://<host>:8090/feed.xml`
+
+## 定时任务（云端建议）
+
+推荐用宿主机 cron 调用容器内抓取：
+
+```bash
+0 7 * * * cd /opt/stanley-rss-reader && docker compose run --rm rss-web python scripts/fetch_rss.py --limit 20 >> /var/log/stanley-rss-cron.log 2>&1
 ```
 
 页面/API/RSS 都由服务从 SQLite 实时读取，不再依赖静态 HTML 生成。
