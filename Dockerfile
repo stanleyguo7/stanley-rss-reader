@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM registry.cn-hangzhou.aliyuncs.com/dockerhub_mirror/python:3.11-slim
 
 WORKDIR /app
 
