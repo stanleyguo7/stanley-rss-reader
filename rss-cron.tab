@@ -1,3 +1,3 @@
 SHELL=/bin/bash
 PATH=/home/guosq/.openclaw/workspace/stanley-rss-reader/.venv/bin:/usr/local/bin:/usr/bin:/bin
-0 7 * * * /home/guosq/.openclaw/workspace/stanley-rss-reader/run_rss.sh >> /home/guosq/.openclaw/workspace/stanley-rss-reader/logs/rss-cron.log 2>&1
+0 7,12,19 * * * /home/guosq/.openclaw/workspace/stanley-rss-reader/run_rss.sh >> /home/guosq/.openclaw/workspace/stanley-rss-reader/logs/rss-cron.log 2>&1
