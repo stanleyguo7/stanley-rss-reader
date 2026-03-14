@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
@@ -28,6 +29,22 @@ REST_WINDOW_HOURS = 24
 
 MQTT_TOPIC_STATE = "homeassistant/sensor/it_rss_brief_mqtt/state"
 MQTT_TOPIC_CONFIG = "homeassistant/sensor/it_rss_brief_mqtt/config"
+BJ_TZ = ZoneInfo("Asia/Shanghai")
+
+
+def to_bj_text(ts: str | None) -> str:
+    if not ts:
+        return ""
+    s = ts.strip()
+    if not s:
+        return ""
+    try:
+        dt_obj = dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError:
+        return s
+    if dt_obj.tzinfo is None:
+        dt_obj = dt_obj.replace(tzinfo=dt.timezone.utc)
+    return dt_obj.astimezone(BJ_TZ).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def safe_excerpt(text: str, length: int = 220) -> str:
@@ -101,14 +118,15 @@ def build_dashboard_summary(sections: list[dict], max_bytes: int = 12000) -> tup
         return len(("\n".join(lines) + extra).encode("utf-8"))
 
     for sec in sections:
-        header = f"---\n## 栏目｜{sec['source_name']}\n"
+        header = f"---\n## {sec['source_name']}\n"
         if cur(header) > max_bytes:
             break
         lines.append(header)
         for e in sec["entries"]:
             block = [f"### **{e['title']}**"]
-            if e.get("published"):
-                block.append(f"*{e['published']}*")
+            published_bj = to_bj_text(e.get("published_ts") or e.get("published"))
+            if published_bj:
+                block.append(f"*{published_bj}*")
             if e.get("summary"):
                 block.append(f"> {e['summary']}")
             block.append(f"[查看原文]({e['link']})")
@@ -172,6 +190,7 @@ def main() -> None:
             sections.append(section)
 
     generated = dt.datetime.now(dt.timezone.utc).isoformat()
+    generated_bj = to_bj_text(generated)
     with get_conn() as conn:
         save_snapshot(conn, generated, sections)
 
@@ -188,8 +207,10 @@ def main() -> None:
     args.rss_xml.write_text(build_feed_xml(items, generated), encoding="utf-8")
 
     summary, cnt = build_dashboard_summary(sections)
-    mqtt_summary = f"**RSS更新时间：** {generated}\n\n{summary}" if summary else f"**RSS更新时间：** {generated}\n\n暂无资讯"
-    publish_to_mqtt(generated, mqtt_summary, cnt)
+    mqtt_summary = (
+        f"**RSS更新时间：** {generated_bj}\n\n{summary}" if summary else f"**RSS更新时间：** {generated_bj}\n\n暂无资讯"
+    )
+    publish_to_mqtt(generated_bj, mqtt_summary, cnt)
 
     print(" | ".join(counts))
     if args.git:
