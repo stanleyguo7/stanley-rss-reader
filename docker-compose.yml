@@ -10,4 +10,4 @@ services:
     volumes:
       - ./data:/app/data
       - ./output:/app/output
-      - ./rss_sources.json:/app/rss_sources.json:ro
+      - ./rss_sources.json:/app/rss_sources.json

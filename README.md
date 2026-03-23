@@ -26,6 +26,7 @@ uvicorn app.server:app --host 0.0.0.0 --port 8090
 
 访问：
 - `http://localhost:8090/`
+- `http://localhost:8090/admin/sources`（RSS源配置页）
 - `http://localhost:8090/api/news`
 - `http://localhost:8090/feed.xml`
 
