@@ -113,7 +113,8 @@ document.getElementById('addBtn').addEventListener('click', () => {
 document.getElementById('saveBtn').addEventListener('click', async () => {
   const sources = collectRows();
   try {
-    const resp = await fetch('/api/sources', {
+    const apiBase = window.location.pathname.includes('/rss/') ? '/rss/api/sources' : '/api/sources';
+    const resp = await fetch(apiBase, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({sources})
