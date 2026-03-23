@@ -106,6 +106,7 @@ def _save_sources(sources: list[dict]) -> None:
 
 
 @app.get("/", response_class=HTMLResponse)
+@app.get("/rss/", response_class=HTMLResponse)
 def home(request: Request):
     with get_conn() as conn:
         payload = load_payload(conn)
@@ -114,6 +115,7 @@ def home(request: Request):
 
 
 @app.get("/feed.xml")
+@app.get("/rss/feed.xml")
 def feed_xml():
     with get_conn() as conn:
         payload = load_payload(conn)
@@ -122,6 +124,7 @@ def feed_xml():
 
 
 @app.get("/api/news")
+@app.get("/rss/api/news")
 def api_news():
     with get_conn() as conn:
         payload = load_payload(conn)
@@ -129,6 +132,7 @@ def api_news():
 
 
 @app.get("/admin/sources", response_class=HTMLResponse)
+@app.get("/rss/admin/sources", response_class=HTMLResponse)
 def admin_sources_page(request: Request):
     sources = _load_sources()
     return templates.TemplateResponse(
@@ -139,11 +143,13 @@ def admin_sources_page(request: Request):
 
 
 @app.get("/api/sources")
+@app.get("/rss/api/sources")
 def get_sources():
     return {"sources": _load_sources()}
 
 
 @app.post("/api/sources")
+@app.post("/rss/api/sources")
 def save_sources(payload: SourcesPayload):
     _save_sources([item.model_dump(mode="json") for item in payload.sources])
     return {"ok": True, "count": len(payload.sources), "sources_file": str(SOURCES_FILE)}
