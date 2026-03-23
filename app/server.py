@@ -110,7 +110,7 @@ def home(request: Request):
     with get_conn() as conn:
         payload = load_payload(conn)
     payload = _with_bj_display(payload)
-    return templates.TemplateResponse("index.html", {"request": request, "data": payload})
+    return templates.TemplateResponse(request, "index.html", {"data": payload})
 
 
 @app.get("/feed.xml")
@@ -132,8 +132,9 @@ def api_news():
 def admin_sources_page(request: Request):
     sources = _load_sources()
     return templates.TemplateResponse(
+        request,
         "admin_sources.html",
-        {"request": request, "sources": sources, "sources_file": str(SOURCES_FILE)},
+        {"sources": sources, "sources_file": str(SOURCES_FILE)},
     )
 
 
