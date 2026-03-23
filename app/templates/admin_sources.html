@@ -29,7 +29,7 @@
   <h1>RSS 源配置</h1>
   <div class="muted">配置文件：{{ sources_file }}</div>
   <div class="actions">
-    <a href="/">← 返回首页</a>
+    <a id="homeLink" href="/">← 返回首页</a>
     <button id="addBtn">+ 新增一行</button>
     <button id="saveBtn" class="primary">保存配置</button>
   </div>
@@ -53,6 +53,12 @@
 const initialSources = {{ sources | tojson }};
 const tbody = document.getElementById('tbody');
 const statusEl = document.getElementById('status');
+const homeLink = document.getElementById('homeLink');
+if (window.location.pathname.includes('/rss/')) {
+  homeLink.setAttribute('href', '/rss/');
+} else {
+  homeLink.setAttribute('href', '/');
+}
 
 function rowHtml(item = {name:'', url:'', category:'custom', notes:''}) {
   return `
