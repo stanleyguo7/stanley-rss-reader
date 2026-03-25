@@ -21,9 +21,8 @@
     p{margin:0 0 8px;color:#344054;line-height:1.65}
     .link{font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .link a{color:#0b73ff;text-decoration:none}
-    .ima-btn{border:1px solid #d0d5dd;background:#fff;border-radius:999px;padding:2px 10px;font-size:12px;cursor:pointer;color:#344054}
+    .ima-btn{width:22px;height:22px;border:1px solid #d0d5dd;background:#fff;border-radius:999px;padding:0;line-height:20px;font-size:15px;cursor:pointer;color:#344054;display:inline-flex;align-items:center;justify-content:center}
     .ima-btn:hover{background:#f9fafb}
-    .ima-msg{font-size:12px;color:#667085}
   </style>
 </head>
 <body>
@@ -48,8 +47,7 @@
             {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
             <div class="link">
               <a href="{{ item.link }}" target="_blank" rel="noopener">查看原文</a>
-              <button class="ima-btn" data-url="{{ item.link }}" onclick="saveToIMA(this)">保存到 IMA</button>
-              <span class="ima-msg"></span>
+              <button class="ima-btn" title="保存到 IMA" aria-label="保存到 IMA" data-url="{{ item.link }}" onclick="saveToIMA(this)">+</button>
             </div>
           </article>
         {% endfor %}
@@ -62,11 +60,9 @@
 <script>
   async function saveToIMA(btn){
     const url = btn.getAttribute('data-url');
-    const msg = btn.parentElement.querySelector('.ima-msg');
     const isRssPrefix = window.location.pathname.startsWith('/rss');
     const apiPath = isRssPrefix ? '/rss/api/ima/save-url' : '/api/ima/save-url';
     btn.disabled = true;
-    if (msg) msg.textContent = '保存中...';
     try {
       const resp = await fetch(apiPath, {
         method: 'POST',
@@ -79,9 +75,8 @@
       if (!resp.ok || !data || !data.ok) {
         throw new Error((data && data.detail) || '保存失败');
       }
-      if (msg) msg.textContent = '已保存到 IMA';
     } catch (err) {
-      if (msg) msg.textContent = (err && err.message) ? err.message : '保存失败';
+      console.warn('saveToIMA failed:', err);
     } finally {
       btn.disabled = false;
     }
