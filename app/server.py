@@ -138,29 +138,9 @@ def api_news():
     return _with_bj_display(payload)
 
 
-def _ima_import_url(url: str) -> dict:
-    client_id = os.getenv("IMA_OPENAPI_CLIENTID", "").strip()
-    api_key = os.getenv("IMA_OPENAPI_APIKEY", "").strip()
-    knowledge_base_id = os.getenv("IMA_KNOWLEDGE_BASE_ID", "").strip()
-
-    if not client_id or not api_key or not knowledge_base_id:
-        missing = [
-            name
-            for name, value in [
-                ("IMA_OPENAPI_CLIENTID", client_id),
-                ("IMA_OPENAPI_APIKEY", api_key),
-                ("IMA_KNOWLEDGE_BASE_ID", knowledge_base_id),
-            ]
-            if not value
-        ]
-        raise HTTPException(status_code=503, detail=f"IMA 配置缺失: {', '.join(missing)}")
-
-    payload = {
-        "knowledge_base_id": knowledge_base_id,
-        "urls": [url],
-    }
+def _ima_post(path: str, payload: dict, client_id: str, api_key: str) -> dict:
     req = Request(
-        "https://ima.qq.com/openapi/wiki/v1/import_urls",
+        f"https://ima.qq.com/{path}",
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         headers={
             "Content-Type": "application/json",
@@ -180,11 +160,56 @@ def _ima_import_url(url: str) -> dict:
         raise HTTPException(status_code=502, detail=f"IMA 网络错误: {e}") from e
 
     try:
-        result = json.loads(raw)
+        return json.loads(raw)
     except json.JSONDecodeError as e:
         raise HTTPException(status_code=502, detail=f"IMA 返回非 JSON: {raw[:240]}") from e
 
-    if result.get("retcode") != 0:
+
+def _resolve_kb_id(client_id: str, api_key: str) -> str:
+    kb_id = os.getenv("IMA_KNOWLEDGE_BASE_ID", "").strip()
+    if kb_id:
+        return kb_id
+
+    res = _ima_post(
+        "openapi/wiki/v1/get_addable_knowledge_base_list",
+        {"cursor": "", "limit": 1},
+        client_id,
+        api_key,
+    )
+    if "retcode" in res and res.get("retcode") != 0:
+        raise HTTPException(status_code=502, detail=f"IMA 获取知识库失败: {res.get('errmsg') or res.get('retcode')}")
+
+    data = res.get("data") or {}
+    lst = data.get("knowledge_bases") or res.get("addable_knowledge_base_list") or []
+    if not lst:
+        raise HTTPException(status_code=503, detail="IMA 未找到可添加知识库，请先在 IMA 中创建或授权知识库")
+    return (lst[0].get("id") or "").strip()
+
+
+def _ima_import_url(url: str) -> dict:
+    client_id = os.getenv("IMA_OPENAPI_CLIENTID", "").strip()
+    api_key = os.getenv("IMA_OPENAPI_APIKEY", "").strip()
+
+    if not client_id or not api_key:
+        missing = [
+            name
+            for name, value in [
+                ("IMA_OPENAPI_CLIENTID", client_id),
+                ("IMA_OPENAPI_APIKEY", api_key),
+            ]
+            if not value
+        ]
+        raise HTTPException(status_code=503, detail=f"IMA 配置缺失: {', '.join(missing)}")
+
+    knowledge_base_id = _resolve_kb_id(client_id, api_key)
+    result = _ima_post(
+        "openapi/wiki/v1/import_urls",
+        {"knowledge_base_id": knowledge_base_id, "urls": [url]},
+        client_id,
+        api_key,
+    )
+
+    if "retcode" in result and result.get("retcode") != 0:
         raise HTTPException(status_code=502, detail=f"IMA 保存失败: {result.get('errmsg') or result.get('retcode')}")
 
     return result

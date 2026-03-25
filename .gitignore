@@ -6,3 +6,4 @@ state/rss_state.json
 logs/*
 app/__pycache__/
 data/*.db
+.env
