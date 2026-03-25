@@ -7,6 +7,10 @@ services:
     restart: unless-stopped
     ports:
       - "8090:8090"
+    environment:
+      - IMA_OPENAPI_CLIENTID=${IMA_OPENAPI_CLIENTID}
+      - IMA_OPENAPI_APIKEY=${IMA_OPENAPI_APIKEY}
+      - IMA_KNOWLEDGE_BASE_ID=${IMA_KNOWLEDGE_BASE_ID}
     volumes:
       - ./data:/app/data
       - ./output:/app/output

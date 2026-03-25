@@ -30,6 +30,19 @@ uvicorn app.server:app --host 0.0.0.0 --port 8090
 - `http://localhost:8090/api/news`
 - `http://localhost:8090/feed.xml`
 
+## IMA 一键保存原文
+
+首页每条资讯在「查看原文」旁新增「保存到 IMA」按钮，点击会调用后端接口：
+- `POST /api/ima/save-url`
+
+需要在运行环境配置以下环境变量：
+- `IMA_OPENAPI_CLIENTID`
+- `IMA_OPENAPI_APIKEY`
+- `IMA_KNOWLEDGE_BASE_ID`
+
+后端会调用 IMA OpenAPI：
+- `POST https://ima.qq.com/openapi/wiki/v1/import_urls`
+
 ## Docker 部署（推荐云端）
 
 ```bash

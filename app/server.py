@@ -2,8 +2,11 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime
 from pathlib import Path
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException
@@ -39,6 +42,10 @@ class SourceItem(BaseModel):
 
 class SourcesPayload(BaseModel):
     sources: list[SourceItem]
+
+
+class ImaSavePayload(BaseModel):
+    url: HttpUrl
 
 
 def _to_bj(ts: str | None) -> str | None:
@@ -129,6 +136,65 @@ def api_news():
     with get_conn() as conn:
         payload = load_payload(conn)
     return _with_bj_display(payload)
+
+
+def _ima_import_url(url: str) -> dict:
+    client_id = os.getenv("IMA_OPENAPI_CLIENTID", "").strip()
+    api_key = os.getenv("IMA_OPENAPI_APIKEY", "").strip()
+    knowledge_base_id = os.getenv("IMA_KNOWLEDGE_BASE_ID", "").strip()
+
+    if not client_id or not api_key or not knowledge_base_id:
+        missing = [
+            name
+            for name, value in [
+                ("IMA_OPENAPI_CLIENTID", client_id),
+                ("IMA_OPENAPI_APIKEY", api_key),
+                ("IMA_KNOWLEDGE_BASE_ID", knowledge_base_id),
+            ]
+            if not value
+        ]
+        raise HTTPException(status_code=503, detail=f"IMA 配置缺失: {', '.join(missing)}")
+
+    payload = {
+        "knowledge_base_id": knowledge_base_id,
+        "urls": [url],
+    }
+    req = Request(
+        "https://ima.qq.com/openapi/wiki/v1/import_urls",
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "ima-openapi-clientid": client_id,
+            "ima-openapi-apikey": api_key,
+        },
+        method="POST",
+    )
+
+    try:
+        with urlopen(req, timeout=20) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+    except HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        raise HTTPException(status_code=502, detail=f"IMA 请求失败: HTTP {e.code} {body[:240]}") from e
+    except URLError as e:
+        raise HTTPException(status_code=502, detail=f"IMA 网络错误: {e}") from e
+
+    try:
+        result = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise HTTPException(status_code=502, detail=f"IMA 返回非 JSON: {raw[:240]}") from e
+
+    if result.get("retcode") != 0:
+        raise HTTPException(status_code=502, detail=f"IMA 保存失败: {result.get('errmsg') or result.get('retcode')}")
+
+    return result
+
+
+@app.post("/api/ima/save-url")
+@app.post("/rss/api/ima/save-url")
+def api_ima_save_url(payload: ImaSavePayload):
+    result = _ima_import_url(str(payload.url))
+    return {"ok": True, "result": result.get("data", result)}
 
 
 @app.get("/admin/sources", response_class=HTMLResponse)

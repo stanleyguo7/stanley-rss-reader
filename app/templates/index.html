@@ -19,8 +19,11 @@
     h3{margin:0 0 6px;font-size:17px}
     .time{color:#98a2b3;font-size:13px;margin-bottom:6px}
     p{margin:0 0 8px;color:#344054;line-height:1.65}
-    .link{font-size:14px}
+    .link{font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .link a{color:#0b73ff;text-decoration:none}
+    .ima-btn{border:1px solid #d0d5dd;background:#fff;border-radius:999px;padding:2px 10px;font-size:12px;cursor:pointer;color:#344054}
+    .ima-btn:hover{background:#f9fafb}
+    .ima-msg{font-size:12px;color:#667085}
   </style>
 </head>
 <body>
@@ -43,7 +46,11 @@
             <h3>{{ item.title }}</h3>
             {% if item.published_display %}<div class="time">{{ item.published_display }}</div>{% endif %}
             {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
-            <div class="link"><a href="{{ item.link }}" target="_blank" rel="noopener">查看原文</a></div>
+            <div class="link">
+              <a href="{{ item.link }}" target="_blank" rel="noopener">查看原文</a>
+              <button class="ima-btn" data-url="{{ item.link }}" onclick="saveToIMA(this)">保存到 IMA</button>
+              <span class="ima-msg"></span>
+            </div>
           </article>
         {% endfor %}
       </section>
@@ -52,5 +59,27 @@
     <section>暂无内容，先执行抓取脚本。</section>
   {% endif %}
 </main>
+<script>
+  async function saveToIMA(btn){
+    const url = btn.getAttribute('data-url');
+    const msg = btn.parentElement.querySelector('.ima-msg');
+    btn.disabled = true;
+    if (msg) msg.textContent = '保存中...';
+    try {
+      const resp = await fetch('/api/ima/save-url', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({url})
+      });
+      const data = await resp.json();
+      if (!resp.ok || !data.ok) throw new Error(data.detail || '保存失败');
+      if (msg) msg.textContent = '已保存到 IMA';
+    } catch (err) {
+      if (msg) msg.textContent = (err && err.message) ? err.message : '保存失败';
+    } finally {
+      btn.disabled = false;
+    }
+  }
+</script>
 </body>
 </html>
