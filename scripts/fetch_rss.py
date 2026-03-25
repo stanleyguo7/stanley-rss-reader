@@ -176,8 +176,17 @@ def git_commit_push(now: dt.datetime) -> None:
     subprocess.run(["git", "push", "origin", "main"], check=True)
 
 
+def ensure_sources_file(path: Path) -> None:
+    if path.exists():
+        return
+    template = path.with_suffix(path.suffix + ".template")
+    if template.exists():
+        path.write_text(template.read_text(encoding="utf-8"), encoding="utf-8")
+
+
 def main() -> None:
     args = parse_args()
+    ensure_sources_file(args.sources)
     sources = json.loads(args.sources.read_text(encoding="utf-8"))
     threshold = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=REST_WINDOW_HOURS)
 

@@ -9,6 +9,8 @@
 - `app/server.py`：FastAPI 服务（页面/API/RSS）
 - `app/templates/index.html`：页面模板
 - `data/rss.db`：主数据源（运行时生成）
+- `rss_sources.json.template`：默认 RSS 源模板
+- `rss_sources.json`：运行时 RSS 源配置（若不存在会自动由 template 复制生成）
 
 ## 本地运行
 

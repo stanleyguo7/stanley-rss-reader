@@ -24,6 +24,7 @@ app = FastAPI(title="Stanley RSS Reader")
 BJ_TZ = ZoneInfo("Asia/Shanghai")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SOURCES_FILE = PROJECT_ROOT / "rss_sources.json"
+SOURCES_TEMPLATE_FILE = PROJECT_ROOT / "rss_sources.json.template"
 
 
 class SourceItem(BaseModel):
@@ -89,7 +90,15 @@ def _with_bj_display(payload: dict) -> dict:
     return data
 
 
+def _ensure_sources_file() -> None:
+    if SOURCES_FILE.exists():
+        return
+    if SOURCES_TEMPLATE_FILE.exists():
+        SOURCES_FILE.write_text(SOURCES_TEMPLATE_FILE.read_text(encoding="utf-8"), encoding="utf-8")
+
+
 def _load_sources() -> list[dict]:
+    _ensure_sources_file()
     if not SOURCES_FILE.exists():
         return []
     try:
