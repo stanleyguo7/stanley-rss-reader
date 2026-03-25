@@ -63,16 +63,22 @@
   async function saveToIMA(btn){
     const url = btn.getAttribute('data-url');
     const msg = btn.parentElement.querySelector('.ima-msg');
+    const isRssPrefix = window.location.pathname.startsWith('/rss');
+    const apiPath = isRssPrefix ? '/rss/api/ima/save-url' : '/api/ima/save-url';
     btn.disabled = true;
     if (msg) msg.textContent = '保存中...';
     try {
-      const resp = await fetch('/api/ima/save-url', {
+      const resp = await fetch(apiPath, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({url})
       });
-      const data = await resp.json();
-      if (!resp.ok || !data.ok) throw new Error(data.detail || '保存失败');
+      const raw = await resp.text();
+      let data = null;
+      try { data = JSON.parse(raw); } catch (_) {}
+      if (!resp.ok || !data || !data.ok) {
+        throw new Error((data && data.detail) || '保存失败');
+      }
       if (msg) msg.textContent = '已保存到 IMA';
     } catch (err) {
       if (msg) msg.textContent = (err && err.message) ? err.message : '保存失败';
