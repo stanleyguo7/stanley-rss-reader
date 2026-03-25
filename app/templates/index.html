@@ -62,7 +62,13 @@
     const url = btn.getAttribute('data-url');
     const isRssPrefix = window.location.pathname.startsWith('/rss');
     const apiPath = isRssPrefix ? '/rss/api/ima/save-url' : '/api/ima/save-url';
+    const oldText = btn.textContent;
+    const oldTitle = btn.title;
+
     btn.disabled = true;
+    btn.textContent = '…';
+    btn.title = '保存中…';
+
     try {
       const resp = await fetch(apiPath, {
         method: 'POST',
@@ -75,8 +81,21 @@
       if (!resp.ok || !data || !data.ok) {
         throw new Error((data && data.detail) || '保存失败');
       }
+
+      btn.textContent = '✓';
+      btn.title = '已保存到 IMA';
+      setTimeout(() => {
+        btn.textContent = oldText;
+        btn.title = oldTitle;
+      }, 1200);
     } catch (err) {
       console.warn('saveToIMA failed:', err);
+      btn.textContent = '!';
+      btn.title = `保存失败：${(err && err.message) || '未知错误'}`;
+      setTimeout(() => {
+        btn.textContent = oldText;
+        btn.title = oldTitle;
+      }, 1800);
     } finally {
       btn.disabled = false;
     }
