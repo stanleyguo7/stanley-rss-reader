@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import Request as UrlRequest, urlopen
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException
@@ -139,7 +139,7 @@ def api_news():
 
 
 def _ima_post(path: str, payload: dict, client_id: str, api_key: str) -> dict:
-    req = Request(
+    req = UrlRequest(
         f"https://ima.qq.com/{path}",
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         headers={
